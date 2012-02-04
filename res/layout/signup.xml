@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/relativeLayout1" xmlns:android="http://schemas.android.com/apk/res/android" android:background="@color/backgroundcolor">
+        <ImageButton android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:layout_height="wrap_content" android:id="@+id/imageButton1" android:layout_width="wrap_content" android:src="@drawable/android_upload" android:layout_alignParentLeft="true"></ImageButton>
+        <LinearLayout android:id="@+id/linearLayout3" android:layout_below="@+id/imageButton1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignLeft="@+id/imageButton1" android:layout_marginTop="3dp" android:layout_marginLeft="3dp" android:background="@drawable/linerlayouttheme">
+            
+            <TextView android:id="@+id/textView3" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="Email" android:textColor="@color/backgroundcolor" android:background="@color/titlebackgrnd" android:layout_height="match_parent" android:gravity="center" android:layout_marginRight="5dp" android:layout_marginLeft="3dp"></TextView>
+            <EditText android:layout_weight="1" android:id="@+id/editText3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@color/backgroundcolor" android:layout_marginRight="2dp" android:layout_marginLeft="1dp" android:layout_marginTop="4dp" android:layout_marginBottom="1dp"></EditText>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/linearLayout4" android:layout_below="@+id/linearLayout3" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginTop="20dp" android:layout_marginLeft="5dp" android:background="@drawable/linerlayouttheme">
+            <TextView android:id="@+id/textView4" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="Password" android:textColor="@color/backgroundcolor" android:layout_marginRight="5dp" android:gravity="center" android:layout_height="match_parent" android:layout_marginLeft="2dp"></TextView>
+            <EditText android:id="@+id/editText4" android:inputType="textPassword" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@color/backgroundcolor" android:layout_marginRight="1dp" android:layout_marginTop="4dp" android:layout_marginBottom="1dp"></EditText>
+        </LinearLayout>
+        <LinearLayout android:layout_below="@+id/linearLayout4" android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginLeft="5dp" android:background="@drawable/linerlayouttheme">
+            <TextView android:id="@+id/textView5" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="Gender" android:textColor="@color/backgroundcolor" android:layout_height="match_parent" android:gravity="center" android:layout_marginLeft="3dp" android:layout_marginRight="5dp"></TextView>
+            <RadioGroup android:orientation="horizontal" android:id="@+id/radioGroup1" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/backgroundcolor" android:layout_marginRight="2dp" android:layout_marginTop="4dp" android:layout_marginBottom="1dp">
+                <RadioButton android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="Female" android:id="@+id/radio0" android:layout_width="wrap_content" android:textColor="@color/textcolor"></RadioButton>
+                <RadioButton android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="Male" android:id="@+id/radio1" android:layout_width="wrap_content" android:textColor="@color/textcolor"></RadioButton>
+            </RadioGroup>
+        </LinearLayout>
+        
+        <LinearLayout android:layout_below="@+id/linearLayout5" android:id="@+id/linearLayout6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginRight="5dp" android:background="@color/backgroundcolor">
+            <Button android:text="Confirm" android:id="@+id/button1" android:layout_height="match_parent" android:layout_width="match_parent"></Button>
+        
+        </LinearLayout>
+        
+        <LinearLayout android:layout_below="@+id/linearLayout1" android:layout_marginTop="20dp" android:id="@+id/linearLayout2" android:layout_toRightOf="@+id/imageButton1" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/linerlayouttheme">
+            <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="First Name" android:textColor="@color/backgroundcolor" android:background="@color/titlebackgrnd" android:layout_height="match_parent" android:layout_marginLeft="5dp" android:layout_marginRight="5dp" android:gravity="center"></TextView>
+            <EditText android:layout_weight="1" android:id="@+id/editText2" android:layout_height="wrap_content" android:inputType="textPersonName" android:layout_width="match_parent" android:background="@color/backgroundcolor" android:layout_marginRight="2dp" android:layout_marginLeft="1dp" android:layout_marginTop="4dp" android:layout_marginBottom="1dp"></EditText>
+        </LinearLayout>
+        <LinearLayout android:contentDescription="Please fill User Name" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_toRightOf="@+id/imageButton1" android:layout_alignTop="@+id/imageButton1" android:background="@drawable/linerlayouttheme">
+            <TextView android:text="User Name" android:id="@+id/textView1" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_width="wrap_content" android:textColor="@color/backgroundcolor" android:layout_height="match_parent" android:gravity="center" android:background="@color/titlebackgrnd" android:layout_marginLeft="5dp" android:layout_marginRight="4dp"></TextView>
+            <EditText android:layout_weight="1" android:id="@+id/editText1" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="1dp" android:layout_marginRight="2dp" android:background="@color/backgroundcolor" android:layout_marginTop="4dp" android:layout_marginBottom="1dp">
+                <requestFocus></requestFocus>
+            </EditText>
+        </LinearLayout>
+
+</RelativeLayout>
+
+

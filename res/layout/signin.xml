@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:id="@+id/relativeLayout1" android:background="#ffffff">
+    <EditText android:layout_height="wrap_content" android:id="@+id/userName" android:layout_alignParentLeft="true" android:layout_width="match_parent" android:hint="User Name">
+        <requestFocus></requestFocus>
+    </EditText>
+    <EditText android:layout_height="wrap_content" android:inputType="textPassword" android:id="@+id/passWord" android:layout_below="@+id/userName" android:layout_alignParentLeft="true" android:layout_width="match_parent" android:hint="Password"></EditText>
+    <Button android:layout_height="wrap_content" android:onClick="signInCommand" android:layout_width="wrap_content" android:text="SignIn" android:id="@+id/SignIn" android:layout_below="@+id/passWord"></Button>
+  
+  </RelativeLayout>
+

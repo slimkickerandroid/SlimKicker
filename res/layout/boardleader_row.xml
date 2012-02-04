@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="wrap_content"
+  android:layout_height="match_parent" android:background="@color/backgroundcolor">
+             <TextView android:layout_height="wrap_content" android:minWidth="70dp" android:id="@+id/friendindex" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             <ImageView android:layout_toRightOf="@+id/friendindex" android:id="@+id/imageUrl" android:layout_height="40dp" android:layout_width="40dp"></ImageView>
+             <TextView android:minWidth="100dp" android:layout_toRightOf="@+id/imageUrl" android:layout_height="wrap_content" android:id="@+id/friendName" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             <TextView android:layout_toRightOf="@+id/friendName" android:id="@+id/weeklypoints" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent" android:gravity="center" android:textColor="@color/textcolor" android:layout_height="wrap_content"></TextView>
+
+</RelativeLayout>

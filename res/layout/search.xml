@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:background="@color/tabbackgrnd">
+
+	<RelativeLayout android:layout_marginTop="5dp" android:id="@+id/relativeLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:background="@drawable/relativelayouttheme">
+		<RadioGroup android:layout_marginLeft="9dp" android:layout_marginRight="9dp"  android:id="@+id/radioGroup1" android:gravity="center" android:layout_marginTop="5dp" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@drawable/relativelayouttheme">
+        	<RadioButton android:onClick="RecentFoodCommand" android:textSize="13dp" android:layout_margin="0.2dp" android:button="@color/transparent" android:padding="2dp" android:background="@drawable/radio" android:id="@+id/radio0" android:text="Recent Foods" android:checked="false" android:layout_width="90dp" android:layout_height="wrap_content"></RadioButton>
+        	<RadioButton android:textSize="13dp" android:layout_margin="0.2dp" android:button="@color/transparent" android:padding="2dp" android:gravity="center" android:background="@drawable/radio" android:id="@+id/radio1" android:text="My Foods" android:layout_height="wrap_content" android:layout_width="90dp"></RadioButton>
+        	<RadioButton android:textSize="13dp" android:layout_margin="0.2dp" android:button="@color/transparent" android:padding="2dp" android:gravity="center" android:background="@drawable/radio" android:id="@+id/radio2" android:layout_width="90dp" android:text="Recipes" android:layout_height="wrap_content"></RadioButton>
+        </RadioGroup>
+		 <RelativeLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_marginTop="20dp" android:layout_below="@+id/radioGroup1" android:gravity="center_horizontal" android:id="@+id/linearLayout1" android:layout_height="wrap_content" android:layout_width="match_parent" android:background="@color/backgroundcolor">
+        	<EditText android:visibility="invisible" android:id="@+id/dummyText1" android:layout_width="200dp" android:layout_height="40dp" android:gravity="center" />  	
+        	<EditText android:id="@+id/editText1" android:layout_width="200dp" android:layout_height="40dp" android:gravity="center" />
+        	<Button android:text="Find" android:layout_height="39dp" android:layout_width="65dp" android:id="@+id/searchFoodButton" android:onClick="inSearchCommand" android:layout_toRightOf="@+id/editText1"></Button>
+    	</RelativeLayout>
+	</RelativeLayout>
+
+    <LinearLayout android:layout_height="wrap_content" android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="vertical">
+        <ListView android:layout_height="wrap_content" android:id="@+id/food" android:layout_width="match_parent"></ListView>
+        <Button android:text="Make your own food" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="match_parent"></Button>
+     </LinearLayout>    
+	<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:layout_height="wrap_content" android:orientation="vertical">
+		<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/button2" android:text="Add Calories"></Button>
+		<ListView android:id="@+id/listView1" android:layout_height="wrap_content" android:layout_width="match_parent"></ListView>
+		     
+	</LinearLayout>
+   
+	
+
+
+</LinearLayout>

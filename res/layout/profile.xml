@@ -1,0 +1,88 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="#D0D0D0">
+<RelativeLayout   android:layout_width="match_parent" android:layout_height="wrap_content"  android:background="#D0D0D0"
+     android:padding="6dp">     
+   <ProgressBar style="?android:attr/progressBarStyleLarge" android:layout_width="fill_parent" android:layout_height="fill_parent" android:id="@+id/progressBar1"></ProgressBar>   
+   <RelativeLayout android:id="@+id/mainLayout1" android:layout_width="fill_parent" android:layout_height="wrap_content" >
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_toRightOf="@+id/imageView2" android:layout_alignParentRight="true" android:layout_height="22dp" android:layout_width="wrap_content" android:layout_alignParentTop="true" android:background="@color/backgroundcolor">
+        <ImageView android:layout_width="wrap_content" android:minWidth="70dp" android:id="@+id/imageView1" android:src="@drawable/points_icon" android:layout_height="match_parent"></ImageView>
+        <TextView android:id="@+id/textView2" android:minWidth="70dp" android:textAppearance="?android:attr/textAppearanceSmall" android:text="Points" android:textColor="@color/textcolor" android:layout_height="match_parent" android:layout_width="wrap_content"></TextView>
+        <TextView android:id="@+id/points" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:layout_width="match_parent" android:text="100" android:textColor="@color/textcolor" android:gravity="right"></TextView>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_toRightOf="@+id/imageView2" android:layout_height="22dp" android:layout_width="wrap_content" android:layout_below="@+id/linearLayout1" android:layout_alignParentRight="true" android:orientation="horizontal" android:background="@color/backgroundcolor">
+        <ImageView android:id="@+id/imageView3" android:minWidth="70dp" android:src="@drawable/badges_icon" android:layout_width="wrap_content" android:layout_height="match_parent"></ImageView>        
+        <TextView android:layout_width="wrap_content" android:id="@+id/textView4" android:layout_height="wrap_content" android:minWidth="70dp" android:textAppearance="?android:attr/textAppearanceSmall" android:text="Rewards" android:textColor="@color/textcolor"></TextView>
+        <TextView android:layout_width="match_parent" android:id="@+id/rewards" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:textColor="@color/textcolor" android:gravity="right"></TextView>
+    </LinearLayout>
+     <LinearLayout android:id="@+id/linearLayout3" android:layout_height="22dp" android:layout_toRightOf="@+id/imageView2" android:layout_width="wrap_content" android:layout_below="@+id/linearLayout2" android:layout_alignParentRight="true" android:background="@color/backgroundcolor">        
+        <ImageView android:id="@+id/imageView4" android:minWidth="70dp" android:src="@drawable/challenges_icon" android:layout_width="wrap_content" android:layout_height="match_parent"></ImageView>        
+        <TextView android:layout_width="wrap_content" android:id="@+id/textView6" android:layout_height="wrap_content" android:minWidth="70dp" android:textAppearance="?android:attr/textAppearanceSmall" android:text="Achievements" android:textColor="@color/textcolor"></TextView>
+        <TextView android:layout_width="match_parent" android:id="@+id/achievement" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="25" android:textColor="@color/textcolor" android:gravity="right"></TextView>
+     </LinearLayout>
+     <LinearLayout android:id="@+id/linearLayout4" android:layout_height="22dp" android:layout_toRightOf="@+id/imageView2"  android:layout_width="wrap_content" android:layout_below="@+id/linearLayout3" android:layout_alignParentRight="true" android:background="@color/backgroundcolor">        
+        <ImageView android:id="@+id/imageView5" android:minWidth="70dp" android:src="@drawable/level_icon" android:layout_width="wrap_content" android:layout_height="match_parent"></ImageView>        
+        <TextView android:layout_width="wrap_content" android:minWidth="70dp" android:id="@+id/textView8" android:layout_height="wrap_content"  android:textAppearance="?android:attr/textAppearanceSmall" android:text="Level" android:textColor="@color/textcolor"></TextView>
+        <TextView android:layout_width="match_parent" android:minWidth="70dp" android:id="@+id/level" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="25" android:enabled="true" android:textColor="@color/textcolor" android:gravity="right"></TextView>
+     </LinearLayout>
+     <ImageView android:id="@+id/imageView2" android:layout_alignParentLeft="true" android:layout_width="100dp" android:layout_height="88dp" android:background="@color/backgroundcolor"></ImageView>
+   </RelativeLayout>
+   
+    <RelativeLayout android:id="@+id/relativeLayout1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_below="@+id/mainLayout1" android:layout_marginTop="10dp" android:background="@drawable/blockshape">
+    <TableLayout android:id="@+id/tableLayout1" android:layout_height="wrap_content" android:layout_width="wrap_content">
+         <TableRow android:id="@+id/tableRow1" android:layout_height="wrap_content" android:layout_width="wrap_content">
+             <LinearLayout android:layout_height="30dp" android:id="@+id/linearLayout7" android:layout_width="match_parent" android:background="@color/titlebackgrnd">
+                 <TextView android:text="Daily Summary" android:minWidth="170dp" android:layout_width="wrap_content" android:id="@+id/textView9" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:textColor="@color/backgroundcolor"></TextView>
+                 <TextView android:text="Total Points" android:minWidth="100dp" android:layout_width="wrap_content" android:id="@+id/textView14" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:textColor="@color/backgroundcolor" android:gravity="center"></TextView>
+                 <TextView android:text="250" android:layout_width="wrap_content" android:id="@+id/total_points" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:textColor="@color/backgroundcolor"></TextView>
+             </LinearLayout>             
+         </TableRow>
+         <TableRow android:layout_marginTop="10dp" android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+             <LinearLayout android:id="@+id/linearLayout5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="fill_horizontal">                              
+                 <TextView android:text="Excercise" android:minWidth="90dp" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:id="@+id/textView10" android:layout_width="wrap_content" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+                 <TextView android:text="Diet" android:minWidth="110dp" android:id="@+id/textView11" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:background="@color/backgroundcolor" android:textColor="@color/textcolor" android:gravity="center"></TextView>        
+        		 <TextView android:text="Challenges" android:minWidth="110dp" android:id="@+id/textView16" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:focusable="true" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             </LinearLayout>
+            </TableRow>
+         <TableRow android:layout_height="match_parent" android:layout_marginTop="3dp" android:layout_width="wrap_content" android:id="@+id/tableRow3" android:gravity="center">
+         <LinearLayout android:id="@+id/linearLayout6" android:layout_height="wrap_content" android:background="@drawable/orange_layer" android:layout_width="wrap_content" android:layout_marginLeft="15dip" android:layout_marginRight="15dip">
+         	 <TextView android:minWidth="90dp" android:textStyle="bold" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/exercise" android:layout_width="wrap_content" android:gravity="center"></TextView>
+             <TextView android:minWidth="110dp" android:textStyle="bold" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/diet" android:layout_width="wrap_content" android:gravity="center"></TextView>
+             <TextView android:minWidth="150dp" android:layout_width="wrap_content" android:id="@+id/challenges" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:textStyle="bold" android:gravity="center"></TextView>       
+         </LinearLayout>         
+         </TableRow> 
+      </TableLayout>
+      <RelativeLayout android:layout_below="@+id/tableLayout1" android:layout_marginTop="5dp" android:layout_width="wrap_content" android:id="@+id/linearLayout9" android:layout_height="wrap_content">
+		 <TextView android:text="Progress to next level " android:minWidth="150dp" android:layout_width="wrap_content" android:id="@+id/textView18" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+	      <View android:layout_below="@+id/textView18" android:layout_width="250dp" android:id="@+id/view3" android:layout_height="30dp" android:background="@drawable/shape1"></View>
+          <TextView android:layout_toRightOf="@+id/view3" android:layout_below="@+id/textView18" android:layout_marginLeft="5dp" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView19" android:layout_height="wrap_content" android:text="900" android:textColor="@color/textcolor"></TextView>
+      	  
+      	  </RelativeLayout>
+	</RelativeLayout>
+	
+    	    <LinearLayout android:layout_marginTop="15dp" android:layout_below="@+id/relativeLayout1" android:layout_width="match_parent" android:id="@+id/linearLayout" android:orientation="vertical" android:layout_height="wrap_content" android:background="@color/titlebackgrnd">        
+         		<TextView android:text="Boardleader" android:layout_width="wrap_content" android:id="@+id/textView20" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="30dp" android:textColor="@color/backgroundcolor"></TextView>
+     	    
+     	        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/friend1layout" android:orientation="horizontal" android:background="@color/backgroundcolor">
+         			<TextView android:layout_height="wrap_content" android:minWidth="70dp" android:id="@+id/friend1index" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             		<ImageView android:layout_below="@+id/textView18" android:id="@+id/image1Url" android:layout_height="30dp" android:layout_width="40dp"></ImageView>
+            	    <TextView android:minWidth="100dp" android:layout_toRightOf="@+id/image1Url" android:layout_height="wrap_content" android:id="@+id/friend1Name" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             		<TextView android:layout_toRightOf="@+id/friend1Name" android:id="@+id/weeklypoints1" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent" android:gravity="center" android:textColor="@color/textcolor" android:layout_height="wrap_content"></TextView>   		
+         		</LinearLayout>
+         		<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/friend2layout" android:orientation="horizontal" android:background="@color/backgroundcolor">
+         			<TextView android:layout_height="wrap_content" android:minWidth="70dp" android:id="@+id/friend2index" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             		<ImageView android:layout_toRightOf="@+id/friend2index" android:id="@+id/image2Url" android:layout_height="40dp" android:layout_width="40dp"></ImageView>
+            	    <TextView android:minWidth="100dp" android:layout_toRightOf="@+id/image2Url" android:layout_height="wrap_content" android:id="@+id/friend2Name" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             		<TextView android:layout_toRightOf="@+id/friend2Name" android:id="@+id/weeklypoints2" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent" android:gravity="center" android:textColor="@color/textcolor" android:layout_height="wrap_content"></TextView>   		
+         		</LinearLayout>
+         		<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/friend3layout" android:orientation="horizontal" android:background="@color/backgroundcolor">
+         			<TextView android:layout_height="wrap_content" android:minWidth="70dp" android:id="@+id/friend3index" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             		<ImageView android:layout_toRightOf="@+id/friend3index" android:id="@+id/image3Url" android:layout_height="40dp" android:layout_width="40dp"></ImageView>
+            	    <TextView android:minWidth="100dp" android:layout_toRightOf="@+id/image3Url" android:layout_height="wrap_content" android:id="@+id/friend3Name" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="@color/textcolor" android:gravity="center"></TextView>
+             		<TextView android:layout_toRightOf="@+id/friend3Name" android:id="@+id/weeklypoints3" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent" android:gravity="center" android:textColor="@color/textcolor" android:layout_height="wrap_content"></TextView>   		
+         		</LinearLayout>
+         	</LinearLayout> 
+</RelativeLayout>
+</ScrollView>
