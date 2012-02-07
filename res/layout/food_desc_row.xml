@@ -5,17 +5,17 @@ android:layout_width="match_parent"
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/blockshape" android:layout_marginTop="10dp" android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/blockshape" android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
         <RelativeLayout android:layout_height="wrap_content" android:id="@+id/relativeLayout3" android:layout_width="match_parent" android:layout_gravity="center" android:background="@color/titlebackgrnd">
-        	<TextView android:gravity="center" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="30dp" android:id="@+id/textView3" android:layout_width="match_parent" android:background="@color/titlebackgrnd" android:textColor="@color/backgroundcolor"></TextView>
+        	<TextView android:gravity="center" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="50dp" android:id="@+id/textView3" android:layout_width="match_parent" android:background="@color/titlebackgrnd" android:textColor="@color/backgroundcolor"></TextView>
   		</RelativeLayout>
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relativeLayout2">
-            <TextView android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:text="@string/servingnumber" android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_alignParentLeft="true" android:textColor="@color/textcolor"></TextView>
-            <Spinner android:id="@+id/spinner1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_alignParentRight="true"></Spinner> 
+            <TextView android:layout_marginLeft="5dp" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:text="@string/servingnumber" android:layout_height="wrap_content" android:id="@+id/textView1" android:layout_alignParentLeft="true" android:textColor="@color/textcolor"></TextView>
+            <Spinner android:id="@+id/servingNumber" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_alignParentRight="true"></Spinner> 
           </RelativeLayout>
         <RelativeLayout android:layout_alignParentBottom="true" android:layout_height="wrap_content" android:id="@+id/relativeLayout1" android:layout_width="match_parent" android:layout_marginTop="10dp">
-            <TextView android:text="Serving Size" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_alignParentLeft="true" android:textColor="@color/textcolor"></TextView>
-            <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView4" android:layout_height="wrap_content" android:text="1 large(8 ounce)" android:layout_width="wrap_content" android:layout_alignParentRight="true" android:textColor="@color/textcolor"></TextView>     
+            <TextView android:layout_marginLeft="5dp" android:text="Serving Size" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_alignParentLeft="true" android:textColor="@color/textcolor"></TextView>
+            <Spinner android:id="@+id/serveSize" android:layout_height="50dp" android:layout_width="180dp" android:layout_alignParentRight="true"></Spinner>     
         </RelativeLayout>              
     </LinearLayout>
     <LinearLayout android:layout_below="@+id/linearLayout1" android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="100dp">
@@ -26,8 +26,7 @@ android:layout_width="match_parent"
     
     <LinearLayout android:layout_below="@+id/linearLayout2" android:layout_height="wrap_content" android:id="@+id/linearLayout3" android:orientation="vertical" android:background="@drawable/blockshape" android:layout_marginLeft="10dp" android:layout_width="match_parent" android:layout_marginRight="10dp">
         <RelativeLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/relativeLayout5" android:background="@color/titlebackgrnd">
-            <TextView android:text="Description" android:id="@+id/textView5" android:gravity="center"  android:layout_height="30dp" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_alignParentLeft="true" android:textColor="@color/backgroundcolor"></TextView>
-            
+            <TextView android:text="Description" android:id="@+id/textView5" android:gravity="center"  android:layout_height="50dp" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_alignParentLeft="true" android:textColor="@color/backgroundcolor"></TextView>
         </RelativeLayout>
         <RelativeLayout android:id="@+id/relativeLayout6" android:layout_height="wrap_content" android:layout_width="match_parent">
         	<TableLayout android:layout_alignParentBottom="true" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/tableLayout1">
@@ -65,6 +64,60 @@ android:layout_width="match_parent"
                 	<LinearLayout android:id="@+id/linearLayout9" android:layout_width="wrap_content" android:layout_height="wrap_content">
                  		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView16" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
                  		<TextView android:layout_width="wrap_content" android:id="@+id/textView17" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow7" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout10" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView18" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView19" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow8" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout11" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView20" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView21" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow9" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout12" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView22" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView23" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow10" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout13" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView24" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView25" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow11" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout14" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView26" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView27" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow12" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout15" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView28" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView29" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow13" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout16" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView30" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView31" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow14" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout17" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView32" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView33" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
+                	 </LinearLayout>
+                </TableRow>
+                <TableRow android:id="@+id/tableRow15" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                	<LinearLayout android:id="@+id/linearLayout18" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                 		<TextView android:paddingLeft="3dp" android:minWidth="230dp" android:layout_width="wrap_content" android:id="@+id/textView34" android:text="TextView" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content"></TextView>
+                 		<TextView android:layout_width="wrap_content" android:id="@+id/textView35" android:text="TextView" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall"></TextView>
                 	 </LinearLayout>
                 </TableRow>
             </TableLayout>

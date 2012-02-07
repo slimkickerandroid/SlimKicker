@@ -15,7 +15,7 @@
     <string name="diet">Diet</string>
     <string name="excersice">Excercise</string>
     <string name="challenges">Challenges</string>
-    <string name="servingnumber">Number of Servings</string>
+    <string name="servingnumber">No. of Servings</string>
     <string-array name="serving_array">
         <item>1</item>
         <item>2</item>

@@ -1,5 +1,6 @@
 package com.proj.food;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,10 +11,22 @@ public class Food implements Parcelable {
 
 	private String food_description = null;
 	private String food_serving_size = null;
+	private List<String> serving_size_list = null;
 
 	public Food(String description, String serving_size) {
 		food_description = description;
 		food_serving_size = serving_size;
+		serving_size_list = new ArrayList<String>();
+	}
+	
+	public void setServingList(List<String> _list)
+	{
+		serving_size_list = _list;
+	}
+	
+	public List<String> getServingList()
+	{
+		return serving_size_list;
 	}
 
 	public String getFood_description() {
@@ -24,7 +37,9 @@ public class Food implements Parcelable {
 		return food_serving_size;
 	}
 
-	private FoodIngredient[] ingredients = new FoodIngredient[] { new Sugar(),
+	private FoodIngredient[] ingredients = new FoodIngredient[] { 
+			
+	new Sugar(),
 
 	new Calcium(),
 
@@ -93,6 +108,7 @@ public class Food implements Parcelable {
 		
 		out.writeStringList(Arrays.asList(keyArr));
 		out.writeStringList(Arrays.asList(valArr));
+		out.writeStringList(serving_size_list);
 
 	}
 
@@ -103,17 +119,18 @@ public class Food implements Parcelable {
 			String serving_size = in.readString();
 			List<String> keyArr = in.createStringArrayList();
 			List<String> valArr = in.createStringArrayList();
-			
+			List<String> serving_list = in.createStringArrayList();
+			Food writeFood = null;
 			if(description != null && serving_size != null)
 			{
-				Food writeFood = new Food(description, serving_size);
+				writeFood = new Food(description, serving_size);
+				writeFood.setServingList(serving_list);
 				for(int i=0; i<keyArr.size(); ++i )
 				{
 					writeFood.SetIngredient(keyArr.get(i), valArr.get(i));
 				}
-				return writeFood;
 			}
-			return null;
+			return writeFood;
 		}
 
 		@Override

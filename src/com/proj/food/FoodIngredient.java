@@ -221,15 +221,12 @@ class Protein extends FoodIngredient
 
 	public Protein()
 	{
-		super("fat", "NA");
-		Key = "protein";
+		super("protein", "NA");
 	}
 	
 	public Protein(String _value)
 	{
-		super("fat", "NA");
-		Key = "protein";
-		value = _value;
+		super("protein", _value);
 	}
 	
 	@Override
