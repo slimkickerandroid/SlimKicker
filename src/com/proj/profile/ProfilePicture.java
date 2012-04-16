@@ -1,4 +1,4 @@
-package com.proj.profile.service;
+package com.proj.profile;
 import java.net.URL;
 import java.io.IOException;
 import java.io.InputStream;

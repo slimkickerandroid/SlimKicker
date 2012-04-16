@@ -1,4 +1,4 @@
-package com.proj.profile.service;
+package com.proj.profile;
 
 public class Profile implements IProfile {
 

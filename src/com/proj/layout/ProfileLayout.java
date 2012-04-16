@@ -1,16 +1,20 @@
 package com.proj.layout;
 
 import java.util.List;
+
+import com.proj.dbadapters.FriendsDBAdapter;
+import com.proj.dbadapters.ProfileDBAdapter;
 import com.proj.friend.Friend;
-import com.proj.friend.FriendService;
-import com.proj.profile.service.IProfilePicture;
-import com.proj.profile.service.IProfileService;
-import com.proj.profile.service.Profile;
-import com.proj.profile.service.ProfilePicture;
-import com.proj.profile.service.ProfileService;
+import com.proj.profile.IProfilePicture;
+import com.proj.profile.Profile;
+import com.proj.profile.ProfilePicture;
+import com.proj.service.ProfileMeta;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,34 +25,29 @@ import android.widget.ImageView;
 
 public class ProfileLayout extends Activity {
 
-	private static String LOG_TAG = "Profile";
+	private static String LOG_TAG = "ProfileLayout";
 	private String username;
 	private String password;
+	private  SharedPreferences prefs;
 	IProfilePicture picture;
 
 	//private ProgressBar mProgress;
 	
 	private void SetUILayout()
 	{
-
-		String profileInfo = null;
-		Bundle infoBundle =	getIntent().getExtras();
-		ProfileService service = null;
-		FriendService friend_service = null;
-		Profile profile = null;
-		picture = new ProfilePicture();
-		if(infoBundle != null)
-		{
-			service = new ProfileService();
-			profileInfo = infoBundle.getString("info");
-			profile = service.parseProfileJson(profileInfo);
-			friend_service = new FriendService();
-			username = infoBundle.getString("username");
-			password = infoBundle.getString("password");
-			
-		}
 		
-		if(service != null)
+		ProfileDBAdapter adapter = new ProfileDBAdapter(getBaseContext(), username, password);
+		FriendsDBAdapter friend_adapter = new FriendsDBAdapter(getBaseContext(), username, password);
+		Object profileData = adapter.getData();
+		List<Friend> friend_list = (List<Friend>) friend_adapter.getData();
+		Profile profile = null;
+		if(profileData instanceof Profile )
+		{
+			profile = (Profile)profileData;
+		}
+		picture = new ProfilePicture();
+		
+		if(profile != null)
 		{
 			 ImageView image =  (ImageView)findViewById(R.id.imageView2);
 			 picture.setImageOnView(profile.getImageURL(), image);
@@ -74,17 +73,18 @@ public class ProfileLayout extends Activity {
 			 TextView total_points = (TextView)findViewById(R.id.total_points);
 			 total_points.setText(profile.getTotal_points());
 			 
+			 
 			 TextView diet = (TextView)findViewById(R.id.diet);
-			 diet.setText(profile.getDiet_points());			 
-		}		
-		
-			
-			List<Friend> friend_list = friend_service.parseFromJson(username, password);
-			//BoardLeaderAdapter adapter = new BoardLeaderAdapter(this, R.layout.boardleader_row, friend_list);
-			//v.setAdapter(adapter);
-			
-			
-			if(friend_list.size() > 0){
+			 diet.setText(profile.getDiet_points());	
+			 
+			 SeekBar progress = (SeekBar)findViewById(R.id.progressBar);
+			 int prog = getValue(profile.getDiet_points())+ getValue(profile.getChallenges_points())
+			 						+ getValue(profile.getChallenges_points());
+			 progress.setProgress(prog);
+			 progress.setMax(100);
+			 progress.setEnabled(false);
+			 
+			if(friend_list != null && friend_list.size() > 0){
 			
 			
 			    Friend friend1 = friend_list.get(0);
@@ -129,9 +129,8 @@ public class ProfileLayout extends Activity {
 				TextView points3 = (TextView)findViewById(R.id.weeklypoints3);
 			    points3.setText(friend3.getWeekly_points());  
 
-				
 			}
-	
+		}
 	}
 	
 	
@@ -141,7 +140,9 @@ public class ProfileLayout extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profile);
 		SetUILayout();
-	                    
+	    prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
+	    username = prefs.getString(ProfileMeta.USER_ID, null);
+		password = prefs.getString(ProfileMeta.PASSWORD, null);
 	}
 		
 	@Override
@@ -154,9 +155,6 @@ public class ProfileLayout extends Activity {
 			startActivity(food);
 	    	return true;
 	    case R.id.friends:
-	    	
-	    	IProfileService service = new ProfileService();
-			service.SetUp("AznHisoka","scryed00");
 		//	service.getProfileData();  
 	        return true;
 	    case R.id.track:
@@ -176,4 +174,15 @@ public class ProfileLayout extends Activity {
 	    return true;
 	}
 	 
+	private int getValue(String str)
+	{
+		try{
+	 int val = Integer.parseInt(str);
+	 return val;
+	 }catch(NumberFormatException e)
+	 {
+		 return 0;
+	 }
+	}
+	
 }

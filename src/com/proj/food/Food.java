@@ -12,11 +12,23 @@ public class Food implements Parcelable {
 	private String food_description = null;
 	private String food_serving_size = null;
 	private List<String> serving_size_list = null;
+	private int uId;
 
 	public Food(String description, String serving_size) {
 		food_description = description;
 		food_serving_size = serving_size;
 		serving_size_list = new ArrayList<String>();
+	}
+	
+	public Food(int id, String description, String serving_size)
+	{
+		this(description, serving_size);
+		uId = id;
+	}
+	
+	public int getId()
+	{
+		return uId;
 	}
 	
 	public void setServingList(List<String> _list)
@@ -94,7 +106,7 @@ public class Food implements Parcelable {
 
 		out.writeString(food_description);
 		out.writeString(food_serving_size);
-		
+		out.writeInt(uId);
 		String[] keyArr = new String[ingredients.length];
 		String[] valArr = new String[ingredients.length];
 		
@@ -117,13 +129,14 @@ public class Food implements Parcelable {
 			
 			String description = in.readString();
 			String serving_size = in.readString();
+			int id = in.readInt();
 			List<String> keyArr = in.createStringArrayList();
 			List<String> valArr = in.createStringArrayList();
 			List<String> serving_list = in.createStringArrayList();
 			Food writeFood = null;
 			if(description != null && serving_size != null)
 			{
-				writeFood = new Food(description, serving_size);
+				writeFood = new Food(id, description, serving_size);
 				writeFood.setServingList(serving_list);
 				for(int i=0; i<keyArr.size(); ++i )
 				{

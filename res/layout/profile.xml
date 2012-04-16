@@ -23,7 +23,7 @@
         <TextView android:layout_width="match_parent" android:id="@+id/achievement" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="25" android:textColor="@color/textcolor" android:gravity="right"></TextView>
      </LinearLayout>
      <LinearLayout android:id="@+id/linearLayout4" android:layout_height="22dp" android:layout_toRightOf="@+id/imageView2"  android:layout_width="wrap_content" android:layout_below="@+id/linearLayout3" android:layout_alignParentRight="true" android:background="@color/backgroundcolor">        
-        <ImageView android:id="@+id/imageView5" android:minWidth="70dp" android:src="@drawable/level_icon" android:layout_width="wrap_content" android:layout_height="match_parent"></ImageView>        
+        <ImageView android:id="@+id/imageView5" android:minWidth="70dp" android:src="@drawable/level_icon" android:layout_width="wrap_content" android:layout_height="match_parent"></ImageView>
         <TextView android:layout_width="wrap_content" android:minWidth="70dp" android:id="@+id/textView8" android:layout_height="wrap_content"  android:textAppearance="?android:attr/textAppearanceSmall" android:text="Level" android:textColor="@color/textcolor"></TextView>
         <TextView android:layout_width="match_parent" android:minWidth="70dp" android:id="@+id/level" android:layout_height="wrap_content" android:textAppearance="?android:attr/textAppearanceSmall" android:text="25" android:enabled="true" android:textColor="@color/textcolor" android:gravity="right"></TextView>
      </LinearLayout>
@@ -56,10 +56,9 @@
       </TableLayout>
       <RelativeLayout android:layout_below="@+id/tableLayout1" android:layout_marginTop="5dp" android:layout_width="wrap_content" android:id="@+id/linearLayout9" android:layout_height="wrap_content">
 		 <TextView android:text="Progress to next level " android:minWidth="150dp" android:layout_width="wrap_content" android:id="@+id/textView18" android:textAppearance="?android:attr/textAppearanceSmall" android:layout_height="wrap_content" android:textColor="@color/textcolor" android:gravity="center"></TextView>
-	      <View android:layout_below="@+id/textView18" android:layout_width="250dp" android:id="@+id/view3" android:layout_height="30dp" android:background="@drawable/shape1"></View>
-          <TextView android:layout_toRightOf="@+id/view3" android:layout_below="@+id/textView18" android:layout_marginLeft="5dp" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView19" android:layout_height="wrap_content" android:text="900" android:textColor="@color/textcolor"></TextView>
-      	  
-      	  </RelativeLayout>
+	      <SeekBar android:layout_below="@+id/textView18" android:layout_height="30dp"  android:id="@+id/progressBar" android:layout_width="250dp"></SeekBar>        
+          <TextView android:layout_toRightOf="@+id/progressBar" android:layout_below="@+id/textView18" android:layout_marginLeft="5dp" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textView19" android:layout_height="wrap_content" android:text="900" android:textColor="@color/textcolor"></TextView>  
+      </RelativeLayout>
 	</RelativeLayout>
 	
     	    <LinearLayout android:layout_marginTop="15dp" android:layout_below="@+id/relativeLayout1" android:layout_width="match_parent" android:id="@+id/linearLayout" android:orientation="vertical" android:layout_height="wrap_content" android:background="@color/titlebackgrnd">        

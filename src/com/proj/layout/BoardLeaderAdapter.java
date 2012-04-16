@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.ImageView;
 
-import com.proj.profile.service.IProfilePicture;
-import com.proj.profile.service.ProfilePicture;
+import com.proj.profile.IProfilePicture;
+import com.proj.profile.ProfilePicture;
 import com.proj.friend.Friend;
 
 import java.util.*;

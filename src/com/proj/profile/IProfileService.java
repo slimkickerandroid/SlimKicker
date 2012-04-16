@@ -1,4 +1,4 @@
-package com.proj.profile.service;
+package com.proj.profile;
 
 import org.json.JSONObject;
 
@@ -8,6 +8,6 @@ public interface IProfileService {
 	
 	public void SetUp(String _userName, String _passWord);
 	
-	public Profile parseProfileJson(String json); 
+	public Profile parseJson(String json); 
 	
 }

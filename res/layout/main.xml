@@ -6,5 +6,4 @@
     <ImageView android:id="@+id/imageView1" android:src="@drawable/iphone_logo" android:layout_width="match_parent" android:layout_height="150dp"></ImageView>
     <Button android:text="Login" android:layout_below="@+id/imageView1" android:id="@+id/button1" android:paddingTop="20dp" android:paddingBottom="20dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginTop="5dp"></Button>
     <Button android:text="Sign Up" android:layout_below="@+id/button1" android:id="@+id/button2" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="20dp" android:paddingBottom="20dp" android:layout_marginTop="10dp"></Button>
-    <Button android:id="@+id/button3" android:layout_below="@+id/button2" android:text="visit www.slimkicker.com" android:paddingTop="20dp" android:paddingBottom ="20dp" android:layout_height="wrap_content" android:layout_width="match_parent" android:layout_marginTop="10dp"></Button>
 </RelativeLayout>

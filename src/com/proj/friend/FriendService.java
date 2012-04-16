@@ -13,6 +13,9 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.proj.service.ServiceMeta;
+
 import android.util.Log;
 import java.util.*;
 
@@ -24,7 +27,7 @@ public class FriendService {
 	private static final String Weekly_Points = "current_week_points";
 	private static final String LOG_TAG = "FriendParser";
 	private String requestUrl = "http://slimkicker.com/getFriends.json?username=";
-	private List<Friend> friendList = new ArrayList<Friend>();
+	
 	
 	private String createRequest(String name, String password){
 	
@@ -34,7 +37,7 @@ public class FriendService {
 	return requestUrl;
 	}
 	
-	public List<Friend> parseFromJson(String userName, String password)
+	public String parseFromJson(String userName, String password)
 	{
 		String request = createRequest(userName, password);
 		HttpClient httpclient = new DefaultHttpClient();
@@ -59,29 +62,20 @@ public class FriendService {
 					InputStream instream = entity.getContent();
 					Log.i(LOG_TAG, "got stream from server");
 					String friends = convertStreamToString(instream);
-					JSONObject json_friend = new JSONObject(friends);
-					JSONArray friend_arr = json_friend.getJSONArray("friends");
-					int length = friend_arr.length();
-					for(int i =0; i<length;++i)
-					{
-						JSONObject friend_json = friend_arr.getJSONObject(i);
-						Friend friend = parseFriends(friend_json);
-						if(friend != null)
-						{
-							friendList.add(friend);
-						}
-					}
-					
+					return friends;
 				}
+			} 
+			else 
+			{
+				return ServiceMeta.CONNECTION_FAILURE;
 			}
 		} 
 		catch(Exception e)
 		{
-			return null;
+			return ServiceMeta.NO_INFO_FOUND;
 		}
-		Collections.sort(friendList);
-		doIndexing(friendList);
-		return friendList;
+		
+		return ServiceMeta.NO_INFO_FOUND;
 		}
 	
 	private String convertStreamToString(InputStream is) throws IOException {
@@ -109,6 +103,34 @@ public class FriendService {
 			}
 		}
 		return sb.toString();
+	}
+	
+	public List<Friend> parseJson(String json)
+	{
+		List<Friend> friendList = new ArrayList<Friend>();
+		JSONObject json_friend;
+		try {
+			json_friend = new JSONObject(json);
+		
+		JSONArray friend_arr = json_friend.getJSONArray("friends");
+		int length = friend_arr.length();
+		for(int i =0; i<length;++i)
+		{
+			JSONObject friend_json = friend_arr.getJSONObject(i);
+			Friend friend = parseFriends(friend_json);
+			if(friend != null)
+			{
+				friendList.add(friend);
+			}
+		}
+		}
+		catch(Exception e)
+		{
+			return friendList;
+		}
+		Collections.sort(friendList);
+		doIndexing(friendList);
+		return friendList;
 	}
 	
 	private Friend parseFriends(JSONObject json)

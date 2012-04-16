@@ -1,12 +1,13 @@
 package com.proj.layout;
 
 import java.util.ArrayList;
-
 import com.proj.food.Food;
 import com.proj.food.FoodService;
-import com.proj.profile.service.ProfileService;
+import com.proj.service.ProfileMeta;
+
 import android.util.Log;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,7 +16,6 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -27,6 +27,9 @@ public class Search extends Activity {
 	private FoodAdapter foodAdapter = null;
 	private FoodService service = null;
 	private boolean IsFocused;
+	static final int PROGRESS_DIALOG = 0;
+    ProgressDialog progressDialog;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class Search extends Activity {
 		// default to recent
 		RecentFoodCommand(null);
 		IsFocused = false;
+		
 	}
 
 	public void onFocusReceived() {
@@ -59,21 +63,21 @@ public class Search extends Activity {
 		});
 	}
 
-	public void inSearchCommand(View view) {
-
+	public void inSearchCommand(View view) 
+	{
 		EditText searchBox = (EditText) findViewById(R.id.editText1);
-		String food_name = searchBox.getText().toString();
+		final String food_name = searchBox.getText().toString();
 		Log.i(LOG_TAG, "onClick");
-		createFoodList(food_name, 0);		
+		createFoodList(food_name, 0);
 	}
 
 	public void RecentFoodCommand(View view) {
 		RadioButton recentButton = (RadioButton) findViewById(R.id.radio0);
 		if (recentButton.isChecked() && !IsFocused) 
 		{
-			SharedPreferences prefs = getSharedPreferences(ProfileService.USER_INFO, MODE_PRIVATE);
-			String userName = prefs.getString(ProfileService.USER_ID, null);
-			String passWord = prefs.getString(ProfileService.PASSWORD, null);
+			SharedPreferences prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
+			String userName = prefs.getString(ProfileMeta.USER_ID, null);
+			String passWord = prefs.getString(ProfileMeta.PASSWORD, null);
 			
 			final ArrayList<Food> names = service.getRecentList(userName, passWord);
 			ListView food = (ListView) findViewById(R.id.food);
@@ -87,9 +91,9 @@ public class Search extends Activity {
 		RadioButton createdButton = (RadioButton) findViewById(R.id.radio1);
 		if (createdButton.isChecked() && !IsFocused) 
 		{
-			SharedPreferences prefs = getSharedPreferences(ProfileService.USER_INFO, MODE_PRIVATE);
-			String userName = prefs.getString(ProfileService.USER_ID, null);
-			String passWord = prefs.getString(ProfileService.PASSWORD, null);
+			SharedPreferences prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
+			String userName = prefs.getString(ProfileMeta.USER_ID, null);
+			String passWord = prefs.getString(ProfileMeta.PASSWORD, null);
 			
 			final ArrayList<Food> names = service.getRecentList(userName, passWord);
 			ListView food = (ListView) findViewById(R.id.food);
@@ -103,9 +107,9 @@ public class Search extends Activity {
 		RadioButton recipeButton = (RadioButton) findViewById(R.id.radio2);
 		if (recipeButton.isChecked() && !IsFocused) 
 		{
-			SharedPreferences prefs = getSharedPreferences(ProfileService.USER_INFO, MODE_PRIVATE);
-			String userName = prefs.getString(ProfileService.USER_ID, null);
-			String passWord = prefs.getString(ProfileService.PASSWORD, null);
+			SharedPreferences prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
+			String userName = prefs.getString(ProfileMeta.USER_ID, null);
+			String passWord = prefs.getString(ProfileMeta.PASSWORD, null);
 			
 			final ArrayList<Food> names = service.getRecentList(userName, passWord);
 			ListView food = (ListView) findViewById(R.id.food);
@@ -126,7 +130,6 @@ public class Search extends Activity {
 		food.setAdapter(foodAdapter);
 		setListeners(food, names);
 		hideKeyBoard();
-
 	}
 	
 	private void hideKeyBoard()
@@ -152,7 +155,7 @@ public class Search extends Activity {
 			}
 		});
 	}
-	
+        	
 }
 
 

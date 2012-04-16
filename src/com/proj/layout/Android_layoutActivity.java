@@ -1,26 +1,31 @@
 package com.proj.layout;
 
+import java.util.concurrent.*;
+import com.proj.service.ProfileMeta;
+import com.proj.service.ServiceMeta;
+import com.proj.service.SyncAllData;
+
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class Android_layoutActivity extends Activity {
+	
+	private CompletionService<Boolean> e;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        
-       // mainView.setBackgroundColor(2);
         Button login = (Button)findViewById(R.id.button1);
         Button signup = (Button)findViewById(R.id.button2);
-        Button webButton = (Button)findViewById(R.id.button3);
-        
+
         signup.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -30,29 +35,28 @@ public class Android_layoutActivity extends Activity {
 			}
 		});
         
-        webButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-				Intent i = new Intent("android.intent.action.VIEW"
-						,Uri.parse("http://www.slimkicker.com"));
-				startActivity(i);
-				
-			}
-		});
-        
         login.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 			 
+				boolean result = callAllService();
+				if(result){
 				Intent signInIntent = new Intent("SignIn");
 				startActivity(signInIntent);
-				
+				}
 			}
 		});
         
+    }
+    
+    private boolean callAllService()
+    {
+    	SharedPreferences prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
+		String id = prefs.getString(ProfileMeta.USER_ID, null);
+		String password = prefs.getString(ProfileMeta.PASSWORD, null);  
+    	SyncAllData allService = new SyncAllData(getBaseContext(), id, "scryed");
+    	return allService.Execute(ServiceMeta.PROFILE_SERVICE, ServiceMeta.FRIEND_SERVICE);
     }
     
     /*

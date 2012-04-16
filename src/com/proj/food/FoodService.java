@@ -19,6 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.proj.service.FoodMeta;
+
 import android.util.Log;
 
 public class FoodService {
@@ -278,12 +280,10 @@ public class FoodService {
 		return foodList;
 	}
 
-	private Food getFood(JSONObject json) throws JSONException {
-		Log.i(LOG_TAG, "in getFood");
-		JSONObject food = json;
+	private Food getFood(JSONObject food) throws JSONException {
 		Log.i(LOG_TAG, "started parsing");
 		int serving = food.getInt("serving_type");
-
+		
 		Map<String, Double> ingredients = new HashMap<String, Double>();
 		ingredients.put("sugars", sanityCheck(food, "sugars"));
 		ingredients.put("calcium", sanityCheck(food, "calcium"));
@@ -340,8 +340,9 @@ public class FoodService {
 			serving_type = servings.getJSONObject(i);
 			serving_list.add(serving_type.getString("name"));
 			if (serving == serving_type.getInt("serving_type")) {
-				// Log.i(LOG_TAG, String.valueOf(serving));
-				newFood = new Food(food.getString("food_description"),
+				// Log.i(LOG_TAG, String.valueOf(serving));		
+			    int id = serving_type.getInt(FoodMeta.FOOD_ID);
+				newFood = new Food(id, food.getString("food_description"),
 						serving_type.getString("name"));
 				Double muiltiplier = serving_type.getDouble("multiplier");
 				Iterator<String> itr = ingredients.keySet().iterator();

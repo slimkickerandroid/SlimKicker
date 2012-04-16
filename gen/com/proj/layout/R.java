@@ -55,10 +55,10 @@ public final class R {
     public static final class id {
         public static final int SignIn=0x7f090082;
         public static final int achievement=0x7f090060;
+        public static final int addFoodButton=0x7f09000f;
         public static final int bottomRow=0x7f090054;
-        public static final int button1=0x7f09000f;
-        public static final int button2=0x7f090056;
-        public static final int button3=0x7f090057;
+        public static final int button1=0x7f090056;
+        public static final int button2=0x7f090057;
         public static final int challenges=0x7f090066;
         public static final int description=0x7f090051;
         public static final int diet=0x7f090065;
@@ -115,6 +115,7 @@ public final class R {
         public static final int mainLayout1=0x7f090059;
         public static final int passWord=0x7f090081;
         public static final int points=0x7f09005b;
+        public static final int progressBar=0x7f090067;
         public static final int progressBar1=0x7f090058;
         public static final int radio0=0x7f090079;
         public static final int radio1=0x7f09007a;
@@ -185,7 +186,6 @@ public final class R {
         public static final int total_points=0x7f090063;
         public static final int track=0x7f090087;
         public static final int userName=0x7f090080;
-        public static final int view3=0x7f090067;
         public static final int weeklypoints=0x7f090003;
         public static final int weeklypoints1=0x7f09006d;
         public static final int weeklypoints2=0x7f090072;

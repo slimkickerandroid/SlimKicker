@@ -20,7 +20,7 @@ android:layout_width="match_parent"
     </LinearLayout>
     <LinearLayout android:layout_below="@+id/linearLayout1" android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="100dp">
         <RelativeLayout android:id="@+id/relativeLayout4" android:layout_marginBottom="30dp" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:layout_width="match_parent" android:gravity="center">
-            <Button android:gravity="center" android:text="Add Now" android:id="@+id/button1" android:layout_width="80dp" android:layout_height="50dp" android:textColor="@color/textcolor"></Button>
+            <Button android:gravity="center" android:text="Add Now" android:id="@+id/addFoodButton" android:onClick="AddFoodCommand" android:layout_width="80dp" android:layout_height="50dp" android:textColor="@color/textcolor"></Button>
         </RelativeLayout>
     </LinearLayout>
     

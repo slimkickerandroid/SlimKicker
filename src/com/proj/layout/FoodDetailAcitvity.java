@@ -1,23 +1,37 @@
 package com.proj.layout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.proj.food.Food;
 import com.proj.food.FoodIngredient;
-
+import com.proj.service.FoodAddService;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class FoodDetailAcitvity extends Activity {
 
 	private static String LOG_TAG = "FoodDetailAcitivity";
+	private Spinner servingQtySpinner;
+	private Spinner servingSizeSpinner;
+	private Food foodSelected;
+	private FoodAddService foodAddService;
+	private String serving_size=null;
+	private String serving_number=null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.food_desc_row);
+		foodAddService = new FoodAddService();
 		Log.i(LOG_TAG, "creating food detail activity");
 		displayDescription();
 	}
@@ -25,20 +39,19 @@ public class FoodDetailAcitvity extends Activity {
 	private void displayDescription() {
 		Log.i(LOG_TAG, "in food detail activity");
 		Bundle bundle = getIntent().getExtras();
-		Food fb = null;
 		if (bundle != null) {
 			Log.i(LOG_TAG, "in bundle");
 			try {
-				fb = (Food) bundle.get("food");
-				if (fb != null) {
-					createView(fb);
+				foodSelected = (Food) bundle.get("food");
+				if (foodSelected != null) {
+					createView(foodSelected);
 				}
 			} catch (Exception e) {
 				Log.i(LOG_TAG, e.getMessage());
 			}
 		}
 		TextView food_name = (TextView) findViewById(R.id.textView3);
-		food_name.setText(fb.getFood_description());
+		food_name.setText(foodSelected.getFood_description());
 		Log.i(LOG_TAG, "adapter setted for foodListView");
 
 	}
@@ -94,6 +107,7 @@ public class FoodDetailAcitvity extends Activity {
 		TextView potassium_name = (TextView)findViewById(R.id.textView34);
 		TextView potassium_value = (TextView)findViewById(R.id.textView35);
 		
+		Button AddButton = (Button)findViewById(R.id.addFoodButton);
 		
 		for(int i =0; i<ingredients.length; ++i)
 		{
@@ -189,16 +203,66 @@ public class FoodDetailAcitvity extends Activity {
 			}
 		}
 		
-		Spinner servingSpinner = (Spinner) findViewById(R.id.servingNumber);
+		servingQtySpinner = (Spinner) findViewById(R.id.servingNumber);
 		Integer[] numbers = new Integer[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20}; 
 		ArrayAdapter<Integer> servingAdapter = new ArrayAdapter<Integer>(this,android.R.layout.simple_spinner_item,numbers);
 		servingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		servingSpinner.setAdapter(servingAdapter);
+		servingQtySpinner.setAdapter(servingAdapter);
+		servingQtySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int pos, long arg3) {
+		      serving_number	= servingQtySpinner.getItemAtPosition(pos).toString();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
-		
-		Spinner spinner = (Spinner) findViewById(R.id.serveSize);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,food.getServingList());
+		servingSizeSpinner = (Spinner) findViewById(R.id.serveSize);
+		List<String> sortedList = new ArrayList<String>();
+		serving_size = food.getFood_serving_size();
+		sortedList.add(food.getFood_serving_size());
+		for (String foodServing : food.getServingList()) 
+		{
+			if(foodServing.equals(serving_size)) continue;
+			sortedList.add(foodServing);
+		}
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,sortedList);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinner.setAdapter(adapter);
+		servingSizeSpinner.setAdapter(adapter);
+		servingSizeSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int pos, long arg3) 
+			{
+				serving_size = servingSizeSpinner.getItemAtPosition(pos).toString();
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+			}
+		});
+		
 	}
+	
+	public void AddFoodCommand(View view)
+	{
+	
+		// TODO error alert
+		if(servingSizeSpinner == null || foodSelected == null || servingQtySpinner == null) 
+			return;
+		else
+		{
+			String test = foodAddService.AddFood("AznHisoka", "scryed", foodSelected, serving_number, serving_size);
+			
+		}
+		
+	}
+	
+	
 }

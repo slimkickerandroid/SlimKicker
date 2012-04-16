@@ -1,4 +1,4 @@
-package com.proj.profile.service;
+package com.proj.profile;
 
 import android.widget.ImageView;
 
