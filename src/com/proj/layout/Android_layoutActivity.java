@@ -39,11 +39,23 @@ public class Android_layoutActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-			 
-				boolean result = callAllService();
-				if(result){
-				Intent signInIntent = new Intent("SignIn");
-				startActivity(signInIntent);
+				String debug = getResources().getString(R.string.debug);
+				boolean result = true;
+				if(debug.equals("false")){
+						result = callAllService();
+					
+					if(result){
+						Intent signInIntent = new Intent("SignIn");
+						startActivity(signInIntent);
+					}
+				} else {
+					Intent i = new Intent("Profile");
+					Bundle profileInfo = new Bundle();
+					profileInfo.putString("info", "");
+					profileInfo.putString("username", "tester");
+					profileInfo.putString("password", "scryed");
+					i.putExtras(profileInfo);
+					startActivity(i);
 				}
 			}
 		});
