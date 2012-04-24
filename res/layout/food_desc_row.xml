@@ -16,7 +16,11 @@ android:layout_width="match_parent"
         <RelativeLayout android:layout_alignParentBottom="true" android:layout_height="wrap_content" android:id="@+id/relativeLayout1" android:layout_width="match_parent" android:layout_marginTop="10dp">
             <TextView android:layout_marginLeft="5dp" android:text="Serving Size" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_alignParentLeft="true" android:textColor="@color/textcolor"></TextView>
             <Spinner android:id="@+id/serveSize" android:layout_height="50dp" android:layout_width="180dp" android:layout_alignParentRight="true"></Spinner>     
-        </RelativeLayout>              
+        </RelativeLayout>
+        <RelativeLayout android:layout_alignParentBottom="true" android:layout_height="wrap_content" android:id="@+id/meal_type" android:layout_width="match_parent" android:layout_marginTop="10dp">
+            <TextView android:layout_marginLeft="5dp" android:text="Meal Type" android:layout_width="wrap_content" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_height="wrap_content" android:id="@+id/mealTitle" android:layout_alignParentLeft="true" android:textColor="@color/textcolor"></TextView>
+            <Spinner android:id="@+id/mealType" android:layout_height="50dp" android:layout_width="180dp" android:layout_alignParentRight="true"></Spinner>     
+        </RelativeLayout>               
     </LinearLayout>
     <LinearLayout android:layout_below="@+id/linearLayout1" android:id="@+id/linearLayout2" android:layout_width="match_parent" android:orientation="vertical" android:layout_height="100dp">
         <RelativeLayout android:id="@+id/relativeLayout4" android:layout_marginBottom="30dp" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:layout_width="match_parent" android:gravity="center">

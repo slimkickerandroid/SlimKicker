@@ -26,6 +26,16 @@
         <item>7</item>
         <item>8</item>
     </string-array>
+    <string name="meal_type">Select meal(optional)</string>
+    <string-array name="meal_array">
+        <item>none</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Snack</item>
+        <item>Dinner</item>
+        <item>Late Snack</item>
+    </string-array>
+    
     <color name="textboxbgrnd2">#BDEDFF</color>
     <color name="border">#38ACEC</color>
     <color name="unhighlighted">#736F6E</color>

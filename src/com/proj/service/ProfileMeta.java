@@ -17,6 +17,5 @@ public class ProfileMeta {
 	public static final String USER_ID = "user";
 	public static final String PASSWORD = "password";
 	public static final String USER_INFO = "userinfo";
-
-
 }
+

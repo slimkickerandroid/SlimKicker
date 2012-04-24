@@ -335,10 +335,15 @@ public class FoodService {
 		JSONObject serving_type;
 		JSONArray servings = food.getJSONArray("servings");
 		Food newFood = null;
+		Map<String, String> servingTypeMap = new HashMap<String, String>();
 		List<String> serving_list = new ArrayList<String>();
 		for (int i = 0; i < servings.length(); i++) {
 			serving_type = servings.getJSONObject(i);
-			serving_list.add(serving_type.getString("name"));
+			String serving_type_name = serving_type.getString("name");
+			String serving_type_no = Integer.toString(serving_type.getInt("serving_type"));
+			servingTypeMap.put(serving_type_name, serving_type_no);
+			serving_list.add(serving_type_name);
+			
 			if (serving == serving_type.getInt("serving_type")) {
 				// Log.i(LOG_TAG, String.valueOf(serving));		
 			    int id = serving_type.getInt(FoodMeta.FOOD_ID);

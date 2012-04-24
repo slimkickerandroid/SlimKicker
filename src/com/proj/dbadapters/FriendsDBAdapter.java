@@ -73,7 +73,8 @@ public class FriendsDBAdapter extends SQLiteOpenHelper {
 			return false;
 		}
 		try {
-			db.update(FriendService.DB_TABLE, values, FriendService.DB_USERNAME+"="+user, null);
+			db.delete(FriendService.DB_TABLE, null, null);
+			db.insert(FriendService.DB_TABLE, null, values);
 			db.close();
 			return true;
 		} catch (SQLiteException e) {
@@ -128,24 +129,6 @@ public class FriendsDBAdapter extends SQLiteOpenHelper {
 
 			HttpGet post = new HttpGet(requestUrl);
 			
-			// Prepare a request object
-			/*
-			HttpPost post = new HttpPost(test);
-			 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-		        nameValuePairs.add(new BasicNameValuePair("username", "AznHisoka"));
-		        nameValuePairs.add(new BasicNameValuePair("password", "scryed"));
-		        nameValuePairs.add(new BasicNameValuePair("active_date", "20120331"));
-		        nameValuePairs.add(new BasicNameValuePair("id", "2110754"));
-		        nameValuePairs.add(new BasicNameValuePair("meal_type", "0"));
-		        nameValuePairs.add(new BasicNameValuePair("num_servings", "1"));
-		        nameValuePairs.add(new BasicNameValuePair("serving_type", "0"));
-		        
-		        try {
-					post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-				} catch (UnsupportedEncodingException e1) {
-					return ServiceMeta.CONNECTION_FAILURE;
-				}
-				*/
 			// Execute the request
 			HttpResponse response;
 			try {
@@ -210,7 +193,6 @@ public class FriendsDBAdapter extends SQLiteOpenHelper {
 			JSONObject json_friend;
 			try {
 				json_friend = new JSONObject(json);
-
 				JSONArray friend_arr = json_friend.getJSONArray("friends");
 				int length = friend_arr.length();
 				for (int i = 0; i < length; ++i) {

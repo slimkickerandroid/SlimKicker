@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.proj.food.Food;
 import com.proj.food.FoodIngredient;
+import com.proj.service.AcknowledgeModel;
 import com.proj.service.FoodAddService;
 import android.app.Activity;
 import android.os.Bundle;
@@ -247,7 +248,12 @@ public class FoodDetailAcitvity extends Activity {
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
 		});
-		
+	
+	    Spinner mealSpinner = (Spinner) findViewById(R.id.mealType);
+		ArrayAdapter<CharSequence> mealAdapter = ArrayAdapter.createFromResource(
+	            this, R.array.meal_array, android.R.layout.simple_spinner_item);
+	    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+	    mealSpinner.setAdapter(mealAdapter);
 	}
 	
 	public void AddFoodCommand(View view)
@@ -258,8 +264,12 @@ public class FoodDetailAcitvity extends Activity {
 			return;
 		else
 		{
-			String test = foodAddService.AddFood("AznHisoka", "scryed", foodSelected, serving_number, serving_size);
-			
+			AcknowledgeModel ack = foodAddService.AddFood("AznHisoka", "scryed", foodSelected, serving_number, serving_size);
+			if(ack != null)
+			{
+				// TODO
+			}
+				
 		}
 		
 	}

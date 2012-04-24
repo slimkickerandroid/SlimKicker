@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/backgroundcolor">
+  <LinearLayout android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="match_parent" >
+      <LinearLayout android:layout_marginTop="10dp" android:layout_width="match_parent" android:layout_height="30dp" android:background="@color/titlebackgrnd" android:id="@+id/nutTipTitle">
+          <TextView android:layout_marginLeft="10dp" android:paddingTop="5dp" android:layout_height="match_parent" android:id="@+id/nutTipText" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:text="Nutrition Tip"></TextView>
+      </LinearLayout> 
+      <TextView android:paddingLeft="5dp" android:textColor="@color/textboxbgrnd" android:id="@+id/textView1" android:text="trying to test how tip will look like on real time, trying to test how tip will look like on real time, trying to test how tip will look like on real time" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true"></TextView>
+  	  <LinearLayout android:layout_marginTop="10dp" android:layout_width="match_parent" android:layout_height="30dp" android:background="@color/titlebackgrnd" android:id="@+id/pointEarnedTitle">
+          <TextView android:layout_marginLeft="10dp" android:paddingTop="5dp" android:layout_height="match_parent" android:id="@+id/pointEarnedText" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:text="Points Earned"></TextView>
+      </LinearLayout>
+      <LinearLayout android:orientation="vertical" android:background="@color/titlebackgrnd" android:layout_width="match_parent" android:layout_height="wrap_content">
+           <LinearLayout android:orientation="horizontal" android:background="@color/backgroundcolor" android:layout_width="match_parent" android:layout_height="wrap_content">
+          		<TextView android:paddingLeft="5dp" android:layout_marginTop="10dp" android:id="@+id/pointEarnedMessage" android:textStyle="bold" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:textColor="@color/textcolor" android:text="Healthy food choice,you earned" android:layout_height="wrap_content" android:layout_alignParentLeft="true"></TextView>
+      	    	<TextView android:paddingLeft="5dp" android:layout_marginLeft="5dp" android:layout_marginTop="10dp" android:id="@+id/pointsEarn" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:textColor="@color/textcolor" android:text="+5" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:background="@color/titlebackgrnd"></TextView>
+      	    </LinearLayout>
+      	    <LinearLayout android:orientation="horizontal" android:background="@color/backgroundcolor" android:layout_width="match_parent" android:layout_height="wrap_content">
+          		<TextView android:paddingLeft="5dp" android:layout_marginTop="10dp" android:id="@+id/fruitEarnedMessage" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:textColor="@color/textcolor" android:text="Added serving of fruits" android:layout_height="wrap_content" android:layout_alignParentLeft="true"></TextView>
+      	    	<TextView android:paddingLeft="5dp" android:layout_marginLeft="5dp" android:layout_marginTop="10dp" android:id="@+id/fruitEarn" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:textColor="@color/textcolor" android:text="+5" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:background="@color/titlebackgrnd"></TextView>
+      	    </LinearLayout>
+      </LinearLayout>
+      <LinearLayout android:layout_marginTop="5dp" android:layout_width="match_parent" android:layout_height="30dp" android:background="@color/titlebackgrnd" android:id="@+id/DailyProgressLayout">
+          <TextView android:layout_marginLeft="10dp" android:paddingTop="5dp" android:layout_height="match_parent" android:id="@+id/dailyProgressText" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="wrap_content" android:text="Daily Progress"></TextView>
+      </LinearLayout>
+  </LinearLayout>
+</LinearLayout>
