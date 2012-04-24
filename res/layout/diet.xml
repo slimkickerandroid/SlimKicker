@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF" 
+
+    >
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+>
+    <ListView
+        android:id="@+id/diet_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF"
+             android:divider="#00000000"
+  >
+    </ListView>
+
+    
+    </LinearLayout>
+    
+      <Button
+        android:background="@drawable/selector"
+        android:id="@+id/add_food_button"
+		android:textColor="#FFFFFF"
+		android:layout_width="fill_parent"
+		android:layout_height="40dip"
+        	android:textStyle="bold"
+        	android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:text="+ Log A Food" />
+
+
+</RelativeLayout>
