@@ -203,23 +203,12 @@ public class ProfileLayout extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
-	    case R.id.challenges:
-	    	Log.i(LOG_TAG, "callin challenges");
-	    /*	Intent food = new Intent("SearchFood");
-			
-			startActivity(food);
-	    	*/
+	    case R.id.Diet:
+	    	Log.i(LOG_TAG, "callin track");
 	    	Intent diet = new Intent("DietActivity");
 	    	startActivity(diet);
-	    	
 	    	return true;
 	    case R.id.friends:
-		//	service.getProfileData();  
-	        return true;
-	    case R.id.track:
-	    	Intent i = new Intent("FoodTab");
-	    	Log.i(LOG_TAG, "Body Menu called");
-			startActivity(i);	    	
 	        return true;
 	    default:
 	    	return true;
