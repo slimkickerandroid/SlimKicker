@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/Challenges"
+        android:title="Challenges"
+        android:icon="@drawable/icon" />
+    <item android:id="@+id/Diet"
+        android:title="Diet"
+        android:icon="@drawable/icon" />
     <item android:id="@+id/track"
         android:title="Track"
         android:icon="@drawable/icon" />
-    <item android:id="@+id/challenges"
-        android:title="Challenges"
+    <item android:id="@+id/body"
+        android:title="Body"
         android:icon="@drawable/icon" />
     <item android:id="@+id/friends"
         android:title="Friends"

@@ -42,6 +42,8 @@ public class ProfileLayout extends Activity {
 		List<Friend> friend_list = new ArrayList<Friend>();
 		String debug = getResources().getString(R.string.debug);
 		if(debug.equals("false")){
+			Log.i(LOG_TAG, "Debug is false");
+
 			ProfileDBAdapter adapter = new ProfileDBAdapter(getBaseContext(), username, password);
 			FriendsDBAdapter friend_adapter = new FriendsDBAdapter(getBaseContext(), username, password);
 			Object profileData = adapter.getData();
@@ -211,39 +213,6 @@ public class ProfileLayout extends Activity {
 		password = prefs.getString(ProfileMeta.PASSWORD, null);
 	}
 	
-	/*
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-	    switch (item.getItemId()) {
-	    case R.id.challenges:
-
-	    	Intent diet = new Intent("DietActivity");
-	    	startActivity(diet);
-	    	
-	    	return true;
-	    case R.id.friends:
-	    		Intent challenges = new Intent("AllChallengeActivity");
-	    		startActivity(challenges);
-		//	service.getProfileData();  
-	        return true;
-	    case R.id.track:
-	    	Intent i = new Intent("FoodTab");
-	    	Log.i(LOG_TAG, "Body Menu called");
-			startActivity(i);	    	
-	        return true;
-	    default:
-	    	return true;
-	    }
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.profile_menu, menu);
-	    return true;
-	}
-	 */
 	private int getValue(String str)
 	{
 		try{

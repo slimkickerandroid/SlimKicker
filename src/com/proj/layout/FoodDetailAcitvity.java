@@ -3,12 +3,16 @@ package com.proj.layout;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.proj.food.AcknowledgeModel;
 import com.proj.food.Food;
 import com.proj.food.FoodIngredient;
-import com.proj.service.AcknowledgeModel;
+import com.proj.service.DefaultProgressController;
 import com.proj.service.FoodAddService;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 public class FoodDetailAcitvity extends Activity {
@@ -27,6 +32,7 @@ public class FoodDetailAcitvity extends Activity {
 	private FoodAddService foodAddService;
 	private String serving_size=null;
 	private String serving_number=null;
+	private DefaultProgressController dialog;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,7 @@ public class FoodDetailAcitvity extends Activity {
 		setContentView(R.layout.food_desc_row);
 		foodAddService = new FoodAddService();
 		Log.i(LOG_TAG, "creating food detail activity");
+		dialog = new DefaultProgressController(this);
 		displayDescription();
 	}
 
@@ -264,15 +271,32 @@ public class FoodDetailAcitvity extends Activity {
 			return;
 		else
 		{
-			AcknowledgeModel ack = foodAddService.AddFood("AznHisoka", "scryed", foodSelected, serving_number, serving_size);
+			dialog.show();
+			AcknowledgeModel ack = foodAddService.AddFood("tester", "scryed", foodSelected, serving_number, serving_size);
 			if(ack != null)
 			{
-				// TODO
+				uiCallback.sendEmptyMessage(0);
+				Intent ackActivity = new Intent("Acknowledge");
+				ackActivity.putExtra("ack", ack);
+				startActivity(ackActivity);
+			} else
+			{
+				Toast toast = Toast.makeText(this, "Service issue found, try again later", Toast.LENGTH_SHORT);
+				toast.show();	
 			}
 				
 		}
 		
 	}
+	
+	private Handler uiCallback = new Handler()
+	{
+		@Override
+		public void handleMessage(Message msg)
+		{
+			dialog.close();
+		}
+	};
 	
 	
 }

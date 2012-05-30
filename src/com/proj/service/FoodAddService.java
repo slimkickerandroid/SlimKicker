@@ -18,6 +18,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 import org.json.JSONException;
+
+import com.proj.food.AcknowledgeModel;
 import com.proj.food.Food;
 import android.util.Log;
 
@@ -113,25 +115,26 @@ public class FoodAddService {
 			JSONObject ackInfo = new JSONObject(response);
 			JSONObject info = ackInfo
 					.getJSONObject(AcknowledgeModel.Points_Update);
-			model.setPoints_added(info.getInt(AcknowledgeModel.POINTS_EARNED));
-			model.setNutrition_tip(info.getString(AcknowledgeModel.Reminder));
-			model.setShort_message(info
-					.getString(AcknowledgeModel.Short_Message));
-
-			JSONObject stats = ackInfo
-					.getJSONObject(AcknowledgeModel.Daily_Stats_Section);
+			int points_earned = info.getInt(AcknowledgeModel.POINTS_EARNED);
+			model.setPoints_added(points_earned);
+			
+			//TODO remider to nutr tip and vice versa may be wrong, confirm with henley
+			String message = info.getString(AcknowledgeModel.Update_Message);
+			model.setReminder(message);
+			
+			String reminder = info.getString(AcknowledgeModel.Reminder);
+			model.setNutrition_tip(reminder);
+			String short_message = info.getString(AcknowledgeModel.Short_Message);
+			model.setShort_message(short_message);
+			JSONObject stats = ackInfo.getJSONObject(AcknowledgeModel.Daily_Stats_Section);
 			Iterator<String> keys = stats.keys();
 			JSONObject stat = null;
 
 			if (keys.hasNext()) {
 				String key = keys.next();
 				stat = stats.optJSONObject(key);
-				/*
-				model
-						.setTotal_point(stat
-								.getInt(AcknowledgeModel.DIET_POINTS));
-				*/
-				model.setTotal_point(7);
+				int diet_points = stat.getInt(AcknowledgeModel.DIET_POINTS);
+				model.setTotal_point(diet_points);
 			}
 
 			return model;

@@ -72,15 +72,6 @@ android:screenOrientation="portrait">
 </intent-filter>
 </activity>
 
-
-<activity android:name=".FoodTab" android:screenOrientation="portrait">
-<intent-filter>
-<action android:name="FoodTab" />
-<category android:name ="android.intent.category.DEFAULT" />
-</intent-filter>
-</activity>
-
-
 <activity android:name=".FoodDetailAcitvity" android:label="Food_Detail"
 android:screenOrientation="portrait">
 <intent-filter>
@@ -104,27 +95,15 @@ android:screenOrientation="portrait">
 <category android:name ="android.intent.category.DEFAULT" />
 </intent-filter>
 </activity>
-<activity android:name=".BodyTabActivity" android:label="@string/app_name"
-          android:theme="@android:style/Theme.NoTitleBar">
-          <intent-filter>
-<action android:name="Body" />
-<category android:name ="android.intent.category.DEFAULT" />
-</intent-filter>
-          </activity>
-          <activity android:name=".ArtistActivity" android:label="Check"
+
+<activity android:name=".AcknowledgeActivity" android:label="Added Food"
 android:screenOrientation="portrait">
 <intent-filter>
-<action android:name="Artist" />
+<action android:name="Acknowledge" />
 <category android:name ="android.intent.category.DEFAULT" />
 </intent-filter>
 </activity>
-          
-<activity android:name=".BodyMenuList" android:label="Body" android:screenOrientation="portrait">
-<intent-filter>
-<action android:name="BodyMenu" />
-<category android:name ="android.intent.category.DEFAULT" />
-</intent-filter>
-</activity>
+
 <activity android:name=".ProfileLayout" android:label="SlimKicker"
 android:screenOrientation="portrait">
 <intent-filter>
