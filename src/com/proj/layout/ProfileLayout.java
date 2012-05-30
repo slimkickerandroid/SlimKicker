@@ -42,7 +42,7 @@ public class ProfileLayout extends Activity {
 		List<Friend> friend_list = new ArrayList<Friend>();
 		String debug = getResources().getString(R.string.debug);
 		if(debug.equals("false")){
-			Log.i(LOG_TAG, "Debug is false");
+			Log.i(LOG_TAG, "Debug is false! !!");
 
 			ProfileDBAdapter adapter = new ProfileDBAdapter(getBaseContext(), username, password);
 			FriendsDBAdapter friend_adapter = new FriendsDBAdapter(getBaseContext(), username, password);

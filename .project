@@ -41,10 +41,5 @@
 			<type>2</type>
 			<locationURI>_android_com_markupartist_android_widget_actionbar_3506d044/src</locationURI>
 		</link>
-		<link>
-			<name>segmentedradios_src</name>
-			<type>2</type>
-			<locationURI>_android_segmentedradios_a0c016a/src</locationURI>
-		</link>
 	</linkedResources>
 </projectDescription>
