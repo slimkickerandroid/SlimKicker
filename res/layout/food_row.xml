@@ -3,8 +3,28 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="match_parent"
-  android:layout_height="match_parent" android:background="@color/backgroundcolor">
-    <TextView android:text="TextView" android:layout_height="wrap_content" android:id="@+id/topRow" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent" android:textColor="@color/textcolor"></TextView>
-    <TextView android:text="TextView" android:layout_height="wrap_content" android:id="@+id/bottomRow" android:textAppearance="?android:attr/textAppearanceMedium" android:layout_width="match_parent" android:textColor="@color/unhighlighted"></TextView>
+  android:layout_height="match_parent"
+  android:paddingTop="6dip"
+  android:paddingBottom="6dip"
+  android:paddingLeft="6dip"
+  android:background="@layout/food_border"  >
+  
+    <TextView android:text="TextView"
+     android:layout_height="wrap_content" 
+     android:id="@+id/topRow" 
+     android:layout_width="match_parent" 
+     android:textSize="15sp"
+     android:textColor="@color/textcolor">
+     </TextView>
+     
+     
+    <TextView android:text="TextView" 
+    android:layout_height="wrap_content" 
+    android:id="@+id/bottomRow" 
+    android:layout_width="match_parent" 
+    android:textColor="@color/unhighlighted"
+    android:textSize="13sp"
+     android:layout_marginTop="4dp" >
+    </TextView>
     
 </LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="search_placeholder">    Search for a food</string>
     <string name="hello">Hello World, Android_layoutActivity!</string>
     <string name="app_name">SlimKicker</string>
    <color name="textcolor">#000000</color>

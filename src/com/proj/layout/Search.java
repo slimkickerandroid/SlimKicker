@@ -1,6 +1,12 @@
 package com.proj.layout;
 
 import java.util.ArrayList;
+
+import com.joelapenna.foursquared.MainActivity;
+import com.joelapenna.foursquared.R;
+import com.joelapenna.foursquared.widget.SegmentedButton;
+import com.joelapenna.foursquared.widget.SegmentedButton.OnClickListenerSegmentedButton;
+import com.markupartist.android.widget.ActionBar;
 import com.proj.food.Food;
 import com.proj.food.FoodService;
 import com.proj.service.ProfileMeta;
@@ -11,14 +17,26 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnFocusChangeListener;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class Search extends Activity {
@@ -35,12 +53,52 @@ public class Search extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 		setContentView(R.layout.search);
+		
+		ActionBar actionBar = (ActionBar) findViewById(R.id.actionbar);
+		actionBar.setHomeLogo(R.drawable.home_logo);
+		
+		RadioGroup group1 = (RadioGroup) this.findViewById(R.id.buttongroup1);
+        
+		group1.check(R.id.option1);
+		
+		Integer[] options = {R.id.option1, R.id.option2, R.id.option3, R.id.option4};
+		
+		for(int i=0; i < options.length; i++){
+			RadioButton b = (RadioButton)this.findViewById(options[i]);
+			
+			
+		}
+		
+		
+		
+		
+        TextView dividerText = (TextView)findViewById(R.id.diet_divider_label);
+        Typeface font = Typeface.createFromAsset(getAssets(), "arial_bold.ttf");
+		dividerText.setTypeface(font);
+		
+		EditText editText = (EditText) this.findViewById(R.id.editText1);
+        font = Typeface.createFromAsset(getAssets(), "arial.ttf");
+
+		editText.setTypeface(font);
+		
+		//ProgressBar bar = (ProgressBar) this.findViewById(R.id.searching_indicator);
+		//bar.setVisibility(View.VISIBLE);
+		  // Create an animation
+
+
+		  // and apply it to your imageview
+		  ImageView loadingView = (ImageView) findViewById(R.id.loadingView);
+		  loadingView.setVisibility(View.GONE);
+		 
+		  
 		service = new FoodService();
 		Log.i(LOG_TAG, "onCreate");
 		onFocusReceived();
 		// default to recent
-		RecentFoodCommand(null);
+		//RecentFoodCommand(null);
 		IsFocused = false;
 		
 	}
@@ -70,7 +128,7 @@ public class Search extends Activity {
 		Log.i(LOG_TAG, "onClick");
 		createFoodList(food_name, 0);
 	}
-
+/*
 	public void RecentFoodCommand(View view) {
 		RadioButton recentButton = (RadioButton) findViewById(R.id.radio0);
 		if (recentButton.isChecked() && !IsFocused) 
@@ -118,18 +176,35 @@ public class Search extends Activity {
 			setListeners(food, names);
 		}
 	}
-	
+	*/
 	void createFoodList(String food_name, int index) {
-		ListView food = (ListView) findViewById(R.id.food);
-
-		final ArrayList<Food> names = service.getSearchList(food_name, index);
-		Log.i("Search", "in search");
-		foodAdapter = new FoodAdapter(this, R.layout.food_row, names);
-		food.setOnScrollListener(new EndlessScrollListener(10, food_name,
-				index, foodAdapter));
-		food.setAdapter(foodAdapter);
-		setListeners(food, names);
+		
+		/*
+		 RotateAnimation rotation = new RotateAnimation(
+			      0f,
+			      360f,
+			      Animation.RELATIVE_TO_SELF,
+			      0.5f,
+			      Animation.RELATIVE_TO_SELF,
+			      0.5f);
+			  rotation.setDuration(1200);
+			  rotation.setInterpolator(new LinearInterpolator());
+			  rotation.setRepeatMode(Animation.RESTART);
+			  rotation.setRepeatCount(Animation.INFINITE);
+			  
+			  ImageView loadingView = (ImageView) findViewById(R.id.loadingView);
+			  
+			  loadingView.setVisibility(View.VISIBLE);
+			  
+			  findViewById(R.id.loadingView).startAnimation(rotation);
+		*/
 		hideKeyBoard();
+		new SearchTask(food_name, index, this).execute();
+
+		//findViewById(R.id.loadingView).clearAnimation();	
+		//ImageView loadingView = (ImageView) findViewById(R.id.loadingView);
+
+		//loadingView.setVisibility(View.GONE);
 	}
 	
 	private void hideKeyBoard()
@@ -154,6 +229,38 @@ public class Search extends Activity {
 
 			}
 		});
+	}
+	
+	private class SearchTask extends AsyncTask < Void, Void, Void >  {
+		private String foodName;
+		private int searchIndex;
+		private Context context;
+		private ArrayList<Food> results;
+		
+		public SearchTask(String foodName, int searchIndex, Context context) {
+			this.foodName = foodName;
+			this.searchIndex = searchIndex;			
+			this.context = context;
+		}
+		
+		protected void onPreExecute() {     
+		
+		}
+	
+		protected Void doInBackground(Void... params) {
+			results = service.getSearchList(foodName, searchIndex);
+			Log.i("Search", "in search");
+
+			return null;
+		}
+	
+		protected void onPostExecute(Void unused) {
+			foodAdapter = new FoodAdapter(context, R.layout.food_row, results);
+			ListView food = (ListView) findViewById(R.id.food);
+			food.setAdapter(foodAdapter);
+			setListeners(food, results);
+		}
+	
 	}
         	
 }

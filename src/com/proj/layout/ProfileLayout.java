@@ -37,6 +37,7 @@ public class ProfileLayout extends Activity {
 	
 	private void SetUILayout()
 	{
+		Log.i(LOG_TAG, "Setting profile");
 		Profile profile = null;
 		List<Friend> friend_list = new ArrayList<Friend>();
 		String debug = getResources().getString(R.string.debug);
@@ -166,11 +167,12 @@ public class ProfileLayout extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		//requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 
 		setContentView(R.layout.profile);
+		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
 		
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
 		Integer[] ids = {R.id.points_label, R.id.badges_label, R.id.level_label, 
 				
 				R.id.points, R.id.achievement, R.id.level,
@@ -183,8 +185,18 @@ public class ProfileLayout extends Activity {
 			txt.setTypeface(font);
 		}
 		
+		Integer dailySummaryIds[] = {R.id.progress_next_level,
+				R.id.daily_summary_total_points, R.id.daily_summary_diet, R.id.daily_summary_exercise, R.id.daily_summary_challenges};
+		
+		for(int i =0; i < dailySummaryIds.length; i++){
+			int id = dailySummaryIds[i];
+			TextView txt = (TextView) findViewById(id);
+			Typeface font = Typeface.createFromAsset(getAssets(), "arial.ttf");
+			txt.setTypeface(font);	
+		}
+		
 		TextView txt = (TextView) findViewById(R.id.daily_summary_label);
-		Typeface font = Typeface.createFromAsset(getAssets(), "helvet-lt-webfont.ttf");
+		Typeface font = Typeface.createFromAsset(getAssets(), "arial_bold.ttf");
 		txt.setTypeface(font);
 		
 		txt = (TextView) findViewById(R.id.leaderboard_label);
@@ -198,22 +210,21 @@ public class ProfileLayout extends Activity {
 	    username = prefs.getString(ProfileMeta.USER_ID, null);
 		password = prefs.getString(ProfileMeta.PASSWORD, null);
 	}
-		
+	
+	/*
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	    case R.id.challenges:
-	    	Log.i(LOG_TAG, "callin challenges");
-	    /*	Intent food = new Intent("SearchFood");
-			
-			startActivity(food);
-	    	*/
+
 	    	Intent diet = new Intent("DietActivity");
 	    	startActivity(diet);
 	    	
 	    	return true;
 	    case R.id.friends:
+	    		Intent challenges = new Intent("AllChallengeActivity");
+	    		startActivity(challenges);
 		//	service.getProfileData();  
 	        return true;
 	    case R.id.track:
@@ -232,7 +243,7 @@ public class ProfileLayout extends Activity {
 	    inflater.inflate(R.menu.profile_menu, menu);
 	    return true;
 	}
-	 
+	 */
 	private int getValue(String str)
 	{
 		try{

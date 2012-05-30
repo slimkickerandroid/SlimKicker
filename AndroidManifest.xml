@@ -31,6 +31,30 @@ android:screenOrientation="portrait">
 </intent-filter>
 </activity>
 
+         <activity android:name=".ChallengeActivity" android:label="Challenge"
+android:screenOrientation="portrait">
+<intent-filter>
+<action android:name="ChallengeActivity" />
+<category android:name ="android.intent.category.DEFAULT" />
+</intent-filter>
+</activity>
+
+         <activity android:name=".MainTabBarActivity" android:label="MainTabBar"
+         android:theme="@style/Theme.NoShadow"
+android:screenOrientation="portrait">
+<intent-filter>
+<action android:name="MainTabBarActivity" />
+<category android:name ="android.intent.category.DEFAULT" />
+</intent-filter>
+</activity>
+
+<activity android:name=".ArrowsActivity" android:label="ArrowsActivity"
+android:screenOrientation="portrait">
+<intent-filter>
+<action android:name="ArrowsActivity" />
+<category android:name ="android.intent.category.DEFAULT" />
+</intent-filter>
+</activity>
 
 <activity android:name=".SignUp" android:label="SlimKicker SignUp"
 android:screenOrientation="portrait">
@@ -39,6 +63,15 @@ android:screenOrientation="portrait">
 <category android:name ="android.intent.category.DEFAULT" />
 </intent-filter>
 </activity>
+
+<activity android:name=".MainTabBarActivity" android:label="SlimKicker SignUp"
+android:screenOrientation="portrait">
+<intent-filter>
+<action android:name="MainTabBarActivity" />
+<category android:name ="android.intent.category.DEFAULT" />
+</intent-filter>
+</activity>
+
 
 <activity android:name=".FoodTab" android:screenOrientation="portrait">
 <intent-filter>

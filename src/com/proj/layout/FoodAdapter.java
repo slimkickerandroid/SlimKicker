@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.proj.food.Food;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,14 @@ public class FoodAdapter extends ArrayAdapter<Food> {
                 topRow.setText(selectedFood.getFood_description());
                 bottomRow.setText(selectedFood.getFood_serving_size());               
         	}
-        return v;
+        
+		Typeface font = Typeface.createFromAsset(getContext().getAssets(), "arial_bold.ttf");
+		topRow.setTypeface(font);
+        
+		font = Typeface.createFromAsset(getContext().getAssets(), "arial.ttf");
+		bottomRow.setTypeface(font);
+		
+		return v;
         
 	}
 
