@@ -1,5 +1,6 @@
 package com.proj.layout;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +32,17 @@ public class DietArrayAdapter extends ArrayAdapter<NutritionInfo> {
 		NutritionInfo nutrientInfo = info.get(position);
 
 	 	 if (rowView == null) {
-	 		
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	        rowView = vi.inflate(R.layout.diet_row, null);
 
+			TextView labelView = (TextView) rowView.findViewById(R.id.label);
+			Typeface font = Typeface.createFromAsset(this.context.getAssets(), "helveticaneue-bold.ttf");
+			labelView.setTypeface(font);
+			
+			labelView = (TextView) rowView.findViewById(R.id.total_label);
+			font = Typeface.createFromAsset(this.context.getAssets(), "HelveticaLight.ttf");
+			labelView.setTypeface(font);
+			
             ViewHolder viewHolder = new ViewHolder();
 	        viewHolder = new ViewHolder();
 	        viewHolder.label = (TextView) rowView.findViewById(R.id.label);
@@ -60,9 +68,6 @@ public class DietArrayAdapter extends ArrayAdapter<NutritionInfo> {
 			else
 				filledBar.setBackgroundResource(R.drawable.blue_rectangle);
 			
-			//RelativeLayout rLayout = ((RelativeLayout) filledBar.getParent());
-			//rLayout.setLayoutParams(new View.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT, RelativeLayout.LayoutParams.FILL_PARENT));
-			
 			float percentage = (float) nutrientInfo.getCurrentAmount() / (float) nutrientInfo.getMaxAmount();
 			
 			float dips = 290.0f * percentage;
@@ -80,7 +85,6 @@ public class DietArrayAdapter extends ArrayAdapter<NutritionInfo> {
 				holder.totalLabel.setText(totalLabel);
 			else
 				holder.totalLabel.setText("");
-
 		}
 		
 		return rowView;
