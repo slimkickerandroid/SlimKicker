@@ -4,8 +4,8 @@
   android:orientation="vertical"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:paddingTop="6dip"
-  android:paddingBottom="6dip"
+  android:paddingTop="4dip"
+  android:paddingBottom="4dip"
   android:paddingLeft="6dip"
   android:background="@layout/food_border"  >
   
@@ -13,7 +13,7 @@
      android:layout_height="wrap_content" 
      android:id="@+id/topRow" 
      android:layout_width="match_parent" 
-     android:textSize="15sp"
+     android:textSize="13sp"
      android:textColor="@color/textcolor">
      </TextView>
      
@@ -23,8 +23,8 @@
     android:id="@+id/bottomRow" 
     android:layout_width="match_parent" 
     android:textColor="@color/unhighlighted"
-    android:textSize="13sp"
-     android:layout_marginTop="4dp" >
+    android:textSize="11sp"
+     android:layout_marginTop="2dp" >
     </TextView>
     
 </LinearLayout>

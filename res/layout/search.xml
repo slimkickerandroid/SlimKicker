@@ -18,9 +18,10 @@
 
 		     		
 	<RelativeLayout 
-	android:layout_marginLeft="10dp"
-	android:layout_marginRight="10dp"
-	android:layout_marginBottom="10dp"
+	 android:paddingLeft="5dp"
+	 android:paddingRight="5dp"
+	android:layout_marginBottom="7dp"
+	android:layout_marginTop="5dp"
 	android:id="@+id/relativeLayout1" 
 	android:layout_height="wrap_content" 
 	android:layout_width="match_parent" 
@@ -38,17 +39,20 @@
         <com.proj.layout.SegmentedControlButton
             android:id="@+id/option1"
             style="@style/buttonStyle1"
-            android:text="   Recent   " />
+            android:text="   Recent   "
+            />
 
         <com.proj.layout.SegmentedControlButton
             android:id="@+id/option2"
             style="@style/buttonStyle1"
-            android:text="   Favorites   " />
+            android:text="   Favorites   "
+                />
             
             <com.proj.layout.SegmentedControlButton
             android:id="@+id/option3"
             style="@style/buttonStyle1"
-            android:text="   Created   " />
+            android:text="   Created   "
+               />
             
                <com.proj.layout.SegmentedControlButton
             android:id="@+id/option4"
@@ -78,7 +82,7 @@
 	   
 	 
         	<EditText android:id="@+id/editText1" 
-        android:layout_width="240dp"
+        android:layout_width="275dp"
         	 android:layout_height="fill_parent"
         	android:hint="@string/search_placeholder"
         	android:paddingLeft="8dip"
@@ -86,12 +90,13 @@
         	   android:textSize="15sp"
         	/>
         	
-      	<Button android:text="Search"
+        	
+      	<ImageButton android:text=""
         	 android:layout_height="fill_parent"
-        	  android:layout_width="70dp"
+        	  android:layout_width="35dp"
         	   android:id="@+id/searchFoodButton" 
         	   android:onClick="inSearchCommand"
-        	   android:textColor="#FFFFFF"
+        	   android:src="@drawable/search_icon"
          	   android:background="@drawable/searchbutton_states"
         	   />
     
@@ -125,38 +130,20 @@ android:paddingLeft="4dip"
     <LinearLayout 
     android:id="@+id/linearLayout2" 
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content" 
+    android:layout_height="fill_parent" 
     >
         
-        <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:id = "@+id/loadingView"
-		android:src="@drawable/loading"
-		android:layout_marginTop="100dip"
-		android:layout_marginLeft="140dip"
-		/>
-		
-        
-        <ListView android:layout_height="wrap_content" 
-        android:id="@+id/food" android:layout_width="match_parent">
+        <ListView 
+        android:layout_height="wrap_content" 
+        android:id="@+id/food" 
+        android:layout_width="match_parent">
         
         </ListView>
-     <!--   <Button android:text="Make your own food" android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="match_parent">
-     </Button>
-     -->
+
      
      </LinearLayout>  
      
-       
-	<LinearLayout android:layout_width="match_parent" android:id="@+id/linearLayout3" android:layout_height="wrap_content" android:orientation="vertical">
-		<!--<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/button2" android:text="Add Calories"></Button>
-		-->
-		
-	
-		<ListView android:id="@+id/listView1" android:layout_height="wrap_content" android:layout_width="match_parent"></ListView>
-		     
-	</LinearLayout>
+
   
 
 
