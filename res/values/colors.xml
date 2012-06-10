@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	
-	
-	
+	 <!--<color name="actionbar_background_start">#095394</color>
+    <color name="actionbar_background_end">#086FB4</color>
+    -->
+    <color name="actionbar_background_start">#0A5495</color>
+    <color name="actionbar_background_end">#0763A6</color>
+    
+     <!-- NEW NEW DESIGN ;) -->
+    <color name="normal">#b0b0b0</color>
+    <color name="light">#ffffff</color>
+    <color name="dark">#000000</color>
+    <color name="highlight">#1E8FEB</color>
+    
+    <color name="actionbar_separator">#CECECE</color>
+    <color name="lightBlue">#3D89BF</color>
 	<color name="tabMedium">#2B2B2B</color>
 	<color name="tabDark">#000000</color>
 	<color name="tabTransparent">#10ffffff</color>
      <color name="black">#424242</color>
      <color name="blue">#00f</color>
-     <color name="red">#FC7C00</color>
-
-	
-	
+     <color name="red">#B02929</color>
+     <color name="green">#6A9100</color>
+     <color name="turquoise">#1B7C9F</color>
+	 <color name="dark_black">#1A1A1A</color>
+	 <color name="orange">#FF8800</color>
+	 <color name="white">#FFFFFF</color>
+	 
 </resources>

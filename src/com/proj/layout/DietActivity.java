@@ -27,7 +27,7 @@ public class DietActivity extends Activity {
 		List<NutritionInfo> info = new ArrayList<NutritionInfo>();
 		
 		String[] nutrients = new String[] {"Calories", "Carbs", "Fat", "Protein", 
-				"Sugars", "Fiber", "Cholesterol", "Sodium", ""};
+				"Sugars", "Fiber", "Cholesterol", "Sodium"};
 		Random diceRoller = new Random();
 
 		for(int i =0; i < nutrients.length; i++){
@@ -45,11 +45,11 @@ public class DietActivity extends Activity {
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		//requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 
 		setContentView(R.layout.diet);
 		
-		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
+		//getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
 
 		//set background o
 		
@@ -61,15 +61,7 @@ public class DietActivity extends Activity {
 
         	listView.setAdapter(adapter);
 
-        	 Button addFood = (Button) findViewById(R.id.add_food_button);
-         addFood.setOnClickListener(new OnClickListener() {
-                 public void onClick(View v) {
-                	    Intent food = new Intent("SearchFood");
-         			
-         			startActivity(food);
-         	    	
-                 }
-         });
+
         	
     }
 }

@@ -10,11 +10,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import com.proj.utils.*;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,190 +34,6 @@ public class FoodService {
 	private static String Recent_Tag = "food_entries";
 	private static final String LOG_TAG = "FoodService";
 
-	// http://www.slimkicker.com/getFoodEntries.json?username=AznHisoka&password=scryed00
-
-	public ArrayList<Food> getRecentList(String username, String password) {
-		String url = Recent_Url + username + "&password=" + password;
-		Log.i(LOG_TAG, url);
-		ArrayList<Food> foodList = new ArrayList<Food>();
-		HttpClient httpclient = new DefaultHttpClient();
-		// Prepare a request object
-		HttpGet httpget = new HttpGet(url.toString());
-
-		// Execute the request
-		HttpResponse response;
-
-		try {
-			response = httpclient.execute(httpget);
-
-			if (response.getStatusLine().getStatusCode() == 200) {
-				// Connection was established. Get the content.
-				Log.i(LOG_TAG, "connection made");
-				HttpEntity entity = response.getEntity();
-				// If the response does not enclose an entity, there is no need
-				// to worry about connection release
-
-				if (entity != null) {
-					// A Simple JSON Response Read
-					InputStream instream = entity.getContent();
-					Log.i(LOG_TAG, "got stream from server");
-					String result = convertStreamToString(instream);
-					Log.i(LOG_TAG, result);
-					JSONObject resultJson = new JSONObject(result);
-					JSONArray foodArray = resultJson.getJSONArray(Recent_Tag);
-					for (int i = 0; i < foodArray.length(); i++) {
-						JSONObject food = foodArray.getJSONObject(i);
-						if (food != null) {
-							Food foodBuilder = getFood(food);
-							if (foodBuilder != null)
-								foodList.add(foodBuilder);
-
-						}
-
-					}
-
-					foodList.add(null);
-					// Close the stream.
-					instream.close();
-				}
-			} else {
-				// TODO
-			}
-		} catch (IOException ex) {
-
-			Log.i(LOG_TAG, ex.toString());
-			// TODO
-		} catch (JSONException ex) {
-			// TODO
-			Log.i(LOG_TAG, ex.toString());
-		}
-
-		return foodList;
-	}
-
-	// http://www.slimkicker.com/getCreatedFoods.json?username=AznHisoka&password=scryed00
-
-	public ArrayList<Food> getCreatedList(String username, String password) {
-		String url = Created_Url + username + "&password=" + password;
-		Log.i(LOG_TAG, url);
-		ArrayList<Food> foodList = new ArrayList<Food>();
-		HttpClient httpclient = new DefaultHttpClient();
-		// Prepare a request object
-		HttpGet httpget = new HttpGet(url.toString());
-
-		// Execute the request
-		HttpResponse response;
-
-		try {
-			response = httpclient.execute(httpget);
-
-			if (response.getStatusLine().getStatusCode() == 200) {
-				// Connection was established. Get the content.
-				Log.i(LOG_TAG, "connection made");
-				HttpEntity entity = response.getEntity();
-				// If the response does not enclose an entity, there is no need
-				// to worry about connection release
-
-				if (entity != null) {
-					// A Simple JSON Response Read
-					InputStream instream = entity.getContent();
-					Log.i(LOG_TAG, "got stream from server");
-					String result = convertStreamToString(instream);
-					Log.i(LOG_TAG, result);
-					JSONObject resultJson = new JSONObject(result);
-					JSONArray foodArray = resultJson.getJSONArray(Recent_Tag);
-					for (int i = 0; i < foodArray.length(); i++) {
-						JSONObject food = foodArray.getJSONObject(i);
-						if (food != null) {
-							Food foodBuilder = getFood(food);
-							if (foodBuilder != null)
-								foodList.add(foodBuilder);
-
-						}
-
-					}
-
-					foodList.add(null);
-					// Close the stream.
-					instream.close();
-				}
-			} else {
-				// TODO
-			}
-		} catch (IOException ex) {
-
-			Log.i(LOG_TAG, ex.toString());
-			// TODO
-		} catch (JSONException ex) {
-			// TODO
-			Log.i(LOG_TAG, ex.toString());
-		}
-
-		return foodList;
-	}
-
-	//www.slimkicker.com/getRecipes.json
-	
-	public ArrayList<Food> getRecipesList(String username, String password) {
-		String url = Recipes_Url + username + "&password=" + password;
-		Log.i(LOG_TAG, url);
-		ArrayList<Food> foodList = new ArrayList<Food>();
-		HttpClient httpclient = new DefaultHttpClient();
-		// Prepare a request object
-		HttpGet httpget = new HttpGet(url.toString());
-
-		// Execute the request
-		HttpResponse response;
-
-		try {
-			response = httpclient.execute(httpget);
-
-			if (response.getStatusLine().getStatusCode() == 200) {
-				// Connection was established. Get the content.
-				Log.i(LOG_TAG, "connection made");
-				HttpEntity entity = response.getEntity();
-				// If the response does not enclose an entity, there is no need
-				// to worry about connection release
-
-				if (entity != null) {
-					// A Simple JSON Response Read
-					InputStream instream = entity.getContent();
-					Log.i(LOG_TAG, "got stream from server");
-					String result = convertStreamToString(instream);
-					Log.i(LOG_TAG, result);
-					JSONObject resultJson = new JSONObject(result);
-					JSONArray foodArray = resultJson.getJSONArray(Recent_Tag);
-					for (int i = 0; i < foodArray.length(); i++) {
-						JSONObject food = foodArray.getJSONObject(i);
-						if (food != null) {
-							Food foodBuilder = getFood(food);
-							if (foodBuilder != null)
-								foodList.add(foodBuilder);
-
-						}
-
-					}
-
-					foodList.add(null);
-					// Close the stream.
-					instream.close();
-				}
-			} else {
-				// TODO
-			}
-		} catch (IOException ex) {
-
-			Log.i(LOG_TAG, ex.toString());
-			// TODO
-		} catch (JSONException ex) {
-			// TODO
-			Log.i(LOG_TAG, ex.toString());
-		}
-
-		return foodList;
-	}
-
-	
 	// http://www.slimkicker.com/search.json?keyword=apple&beginIndex=10
 
 	public ArrayList<Food> getSearchList(String keyword, int index) {
@@ -224,7 +42,10 @@ public class FoodService {
 		ArrayList<Food> foodList = new ArrayList<Food>();
 		url.append(keyword).append("&beginIndex=").append(index);
 		Log.i(LOG_TAG, url.toString());
-		HttpClient httpclient = new DefaultHttpClient();
+		
+		HttpClient httpclient = HttpUtil.getThreadSafeClient();
+		
+		//HttpClient httpclient = new DefaultHttpClient();
 		// Prepare a request object
 		HttpGet httpget = new HttpGet(url.toString());
 
@@ -262,9 +83,10 @@ public class FoodService {
 					}
 
 					foodList.add(null);
-					// Close the stream.
 					instream.close();
+					// Close the stream.
 				}
+				
 			} else {
 				// TODO
 			}
@@ -390,23 +212,16 @@ public class FoodService {
 		 * return null which means there's no more data to read. Each line will
 		 * appended to a StringBuilder and returned as String.
 		 */
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+		BufferedReader reader = new BufferedReader(new InputStreamReader(is), 8192);
 		StringBuilder sb = new StringBuilder();
 
 		String line = null;
-		try {
-			while ((line = reader.readLine()) != null) {
-				sb.append(line);
-			}
-		} catch (IOException e) {
-			throw new IOException();
-		} finally {
-			try {
-				is.close();
-			} catch (IOException e) {
-				throw new IOException();
-			}
+		
+		while ((line = reader.readLine()) != null) {
+			sb.append(line);
 		}
+		
+		reader.close();
 		return sb.toString();
 	}
 

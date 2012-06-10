@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:foursquared="http://schemas.android.com/apk/res/com.proj.layout"
+android:orientation="vertical"
+android:background="#227DC8"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content">
+
+
+   <LinearLayout
+    android:id="@+id/header"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="8dip"
+    android:paddingBottom="8dip"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip"
+    android:background="#227DC8">
+
+
+    <com.joelapenna.foursquared.widget.SegmentedButton
+      android:id="@+id/segmented"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      foursquared:gradientColorOffStart="#EF7424"
+      foursquared:gradientColorOffEnd="#EF7424"
+      foursquared:gradientColorOnStart="#FFC27C"
+      foursquared:gradientColorOnEnd="#FFB25B"
+      foursquared:gradientColorSelectedStart="#FFAA00"
+      foursquared:gradientColorSelectedEnd="#FFAA00"
+      foursquared:textStyle="@style/TextViewStyleHeaderButtonBlue"
+      foursquared:strokeColor="#2F3232"
+      foursquared:strokeWidth="1dip"
+      foursquared:cornerRadius="4dip"
+      foursquared:btnPaddingTop="7dip"
+      foursquared:btnPaddingBottom="7dip"
+      /> 
+        
+  </LinearLayout>
+  
+  
+        
+  
+  
+    <ListView
+        android:id="@+id/challenge_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF"
+             android:divider="#00000000">
+    </ListView>
+
+    
+</LinearLayout>

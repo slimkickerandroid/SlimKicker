@@ -23,16 +23,7 @@ android:layout_height="wrap_content"
     
     </LinearLayout>
     
-      <Button
-        android:background="@drawable/selector"
-        android:id="@+id/add_food_button"
-		android:textColor="#FFFFFF"
-		android:layout_width="fill_parent"
-		android:layout_height="40dip"
-        	android:textStyle="bold"
-        	android:textSize="20sp"
-        android:layout_alignParentBottom="true"
-        android:text="+ Log A Food" />
+
 
 
 </RelativeLayout>

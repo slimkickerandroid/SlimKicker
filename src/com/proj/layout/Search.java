@@ -1,6 +1,12 @@
 package com.proj.layout;
 
 import java.util.ArrayList;
+
+import com.joelapenna.foursquared.MainActivity;
+import com.joelapenna.foursquared.R;
+import com.joelapenna.foursquared.widget.SegmentedButton;
+import com.joelapenna.foursquared.widget.SegmentedButton.OnClickListenerSegmentedButton;
+import com.markupartist.android.widget.ActionBar;
 import com.proj.food.Food;
 import com.proj.food.FoodService;
 import com.proj.service.ProfileMeta;
@@ -11,14 +17,29 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnFocusChangeListener;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class Search extends Activity {
@@ -29,36 +50,100 @@ public class Search extends Activity {
 	private boolean IsFocused;
 	static final int PROGRESS_DIALOG = 0;
     ProgressDialog progressDialog;
-
+	private ArrayList<Food> results;
+	private ProgressDialog spinnerDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 		setContentView(R.layout.search);
+		
+		ActionBar actionBar = (ActionBar) findViewById(R.id.actionbar);
+		actionBar.setHomeLogo(R.drawable.home_logo);
+		
+		RadioGroup group1 = (RadioGroup) this.findViewById(R.id.buttongroup1);
+        
+		group1.check(R.id.option1);
+		
+		Integer[] options = {R.id.option1, R.id.option2, R.id.option3, R.id.option4};
+		
+		for(int i=0; i < options.length; i++){
+			RadioButton b = (RadioButton)this.findViewById(options[i]);
+		}
+		
+        TextView dividerText = (TextView)findViewById(R.id.diet_divider_label);
+        Typeface font = Typeface.createFromAsset(getAssets(), "arial_bold.ttf");
+		dividerText.setTypeface(font);
+		
+		EditText editText = (EditText) this.findViewById(R.id.editText1);
+        font = Typeface.createFromAsset(getAssets(), "arial.ttf");
+
+		editText.setTypeface(font);
+		  
 		service = new FoodService();
 		Log.i(LOG_TAG, "onCreate");
 		onFocusReceived();
 		// default to recent
-		RecentFoodCommand(null);
+		//RecentFoodCommand(null);
 		IsFocused = false;
+		
+		ListView food = (ListView) findViewById(R.id.food);
+		
+		food.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1,
+					int position, long arg3) {
+
+				Intent foodDetail = new Intent("FoodDetail");
+				Food food = results.get(position);
+				foodDetail.putExtra("food", food);
+				startActivity(foodDetail);
+			}
+		});
 		
 	}
 
+	private void resizeListView(boolean small){
+		final Context currentContext = this;
+		ListView food = (ListView) findViewById(R.id.food);
+
+		float dips = 60.0f;
+		float scale = currentContext.getResources().getDisplayMetrics().density;
+		int height = Math.round(dips * scale);
+		
+		if(small == false) //resize it to original size
+			height = LinearLayout.LayoutParams.WRAP_CONTENT;
+
+		LinearLayout.LayoutParams mParam = 
+				new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, height);
+		
+        food.setLayoutParams(mParam);
+	}
+	
 	public void onFocusReceived() {
 		EditText searchBox = (EditText) findViewById(R.id.editText1);
+		final Context currentContext = this;
+		
+		searchBox.setOnClickListener(new View.OnClickListener() {
+	        @Override
+	        public void onClick(View v) {
+	        		Log.i(LOG_TAG, "Click on text edit");
+	        		//ListView food = (ListView) findViewById(R.id.food);
+	        		//food.setAdapter(null);
+	        		
+	        		//resizeListView(true);			        
+	        }
+	    });
+		
 		searchBox.setOnFocusChangeListener(new OnFocusChangeListener() {
 
 			@Override
 			public void onFocusChange(View v, boolean hasFocus) {
 				// TODO Auto-generated method stub
-				if (hasFocus) {
-					if (foodAdapter != null) {
-						IsFocused = true;
-						foodAdapter.clear();
-					}
-				}
-
+				Log.i(LOG_TAG, "On text view focus");
 			}
 		});
 	}
@@ -71,72 +156,19 @@ public class Search extends Activity {
 		createFoodList(food_name, 0);
 	}
 
-	public void RecentFoodCommand(View view) {
-		RadioButton recentButton = (RadioButton) findViewById(R.id.radio0);
-		if (recentButton.isChecked() && !IsFocused) 
-		{
-			SharedPreferences prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
-			String userName = prefs.getString(ProfileMeta.USER_ID, null);
-			String passWord = prefs.getString(ProfileMeta.PASSWORD, null);
-			
-			final ArrayList<Food> names = service.getRecentList(userName, passWord);
-			ListView food = (ListView) findViewById(R.id.food);
-			foodAdapter = new FoodAdapter(this, R.layout.food_row, names);
-			food.setAdapter(foodAdapter);
-			setListeners(food, names);
-		}
-	}
-	
-	public void CreatedFoodCommand(View view) {
-		RadioButton createdButton = (RadioButton) findViewById(R.id.radio1);
-		if (createdButton.isChecked() && !IsFocused) 
-		{
-			SharedPreferences prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
-			String userName = prefs.getString(ProfileMeta.USER_ID, null);
-			String passWord = prefs.getString(ProfileMeta.PASSWORD, null);
-			
-			final ArrayList<Food> names = service.getRecentList(userName, passWord);
-			ListView food = (ListView) findViewById(R.id.food);
-			foodAdapter = new FoodAdapter(this, R.layout.food_row, names);
-			food.setAdapter(foodAdapter);
-			setListeners(food, names);
-		}
-	}
+	void createFoodList(String foodName, int searchIndex) {
 
-	public void RecipeFoodCommand(View view) {
-		RadioButton recipeButton = (RadioButton) findViewById(R.id.radio2);
-		if (recipeButton.isChecked() && !IsFocused) 
-		{
-			SharedPreferences prefs = getSharedPreferences(ProfileMeta.USER_INFO, MODE_PRIVATE);
-			String userName = prefs.getString(ProfileMeta.USER_ID, null);
-			String passWord = prefs.getString(ProfileMeta.PASSWORD, null);
-			
-			final ArrayList<Food> names = service.getRecentList(userName, passWord);
-			ListView food = (ListView) findViewById(R.id.food);
-			foodAdapter = new FoodAdapter(this, R.layout.food_row, names);
-			food.setAdapter(foodAdapter);
-			setListeners(food, names);
-		}
+		new SearchTask(foodName, searchIndex).execute();
 	}
 	
-	void createFoodList(String food_name, int index) {
-		ListView food = (ListView) findViewById(R.id.food);
-
-		final ArrayList<Food> names = service.getSearchList(food_name, index);
-		Log.i("Search", "in search");
-		foodAdapter = new FoodAdapter(this, R.layout.food_row, names);
-		food.setOnScrollListener(new EndlessScrollListener(10, food_name,
-				index, foodAdapter));
-		food.setAdapter(foodAdapter);
-		setListeners(food, names);
-		hideKeyBoard();
-	}
-	
-	private void hideKeyBoard()
+	public void hideKeyBoard()
 	{
+		//get rid of all items in list view
+
 		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-		EditText searchBox = (EditText) findViewById(R.id.editText1);
-		imm.hideSoftInputFromWindow(searchBox.getWindowToken(), 0);
+		//EditText searchBox = (EditText) findViewById(R.id.editText1);
+		//imm.hideSoftInputFromWindow(searchBox.getWindowToken(), 0);
+        imm.hideSoftInputFromWindow(getWindow().getCurrentFocus().getWindowToken(), 0);
 	}
 	
 	private void setListeners(ListView food, final ArrayList<Food> names)
@@ -154,6 +186,48 @@ public class Search extends Activity {
 
 			}
 		});
+	}
+	
+	private class SearchTask extends AsyncTask < Void, Void, Void >  {
+		private String foodName;
+		private int searchIndex;
+		
+		public SearchTask(String foodName, int searchIndex) {
+			this.foodName = foodName;
+			this.searchIndex = searchIndex;			
+		}
+		
+		public void hideKeyBoard()
+		{
+			InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			EditText searchBox = (EditText) findViewById(R.id.editText1);
+			imm.hideSoftInputFromWindow(searchBox.getWindowToken(), 0);
+		}
+		
+		protected void onPreExecute() {   
+			hideKeyBoard();
+
+			spinnerDialog = ProgressDialog.show(  
+					Search.this, "",  "Searching foods...", true);  
+		}
+	
+		protected Void doInBackground(Void... params) {
+			results = service.getSearchList(foodName, searchIndex);
+			Log.i("Search", "in search");
+			return null;
+		}
+	
+		protected void onPostExecute(Void unused) {
+			spinnerDialog.dismiss();
+		    RadioGroup radioGroup = (RadioGroup) findViewById(R.id.buttongroup1);
+            radioGroup.clearCheck();
+
+			foodAdapter = new FoodAdapter(Search.this, R.layout.food_row, results);
+			ListView food = (ListView) findViewById(R.id.food);
+
+			food.setAdapter(foodAdapter);
+			
+		}
 	}
         	
 }

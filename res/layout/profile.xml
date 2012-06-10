@@ -33,23 +33,30 @@ android:layout_alignTop="@id/imageView2"
 android:layout_alignBottom="@id/imageView2"
 android:layout_toRightOf="@id/imageView2"
 android:paddingTop="8dip"
-android:paddingLeft="8dip"
+android:paddingLeft="2dip"
 android:paddingRight="8dip"
 android:stretchColumns="0"
 android:background="#000000"
 >
 	<TableRow android:layout_weight="1">
+		<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="0dip"
+		android:src="@drawable/badges_icon"
+		android:layout_weight="1"
+		
+		/>
+		
 	<TextView 
 		android:id="@+id/points_label" 
-	android:text="Points"
+	    android:text="Points"
 		android:textColor="#FFFFFF"
 		android:layout_width="0dip"
-		android:layout_weight="4">
+		android:layout_weight="5">
 	</TextView>
 	<TextView android:text="100"
 		android:textColor="#C8C8C8"
 		android:layout_width="0dip"
-		android:layout_weight="1"
+		android:layout_weight="2"
 		android:id="@+id/points"
 		android:gravity="right"
 		android:paddingRight="8dip"
@@ -60,17 +67,23 @@ android:background="#000000"
 	</TableRow>
 	
 	<TableRow android:layout_weight="1">
+			<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="0dip"
+		android:src="@drawable/challenges_icon"
+		android:layout_weight="1"
+		
+		/>
 		<TextView android:text="Achievements"
 				android:id="@+id/badges_label" 
 		
 		android:textColor="#FFFFFF"
 			android:layout_width="0dip"
-		android:layout_weight="4">
+		android:layout_weight="5">
 	</TextView>
 	<TextView android:text="5"
 		android:textColor="#359AEE"
 		android:layout_width="0dip"
-		android:layout_weight="1"
+		android:layout_weight="2"
 				android:id="@+id/achievement"
 		android:paddingRight="8dip"
 		
@@ -80,17 +93,24 @@ android:background="#000000"
 	</TableRow>
 	
 	<TableRow android:layout_weight="1"	>
+			<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="0dip"
+		android:src="@drawable/level_icon"
+		android:layout_weight="1"
+		
+		/>
+		
 	<TextView android:text="Level"
 			android:id="@+id/level_label" 
 	
 		android:textColor="#FFFFFF"
 			android:layout_width="0dip"
-		android:layout_weight="4">
+		android:layout_weight="5">
 	</TextView>
 	<TextView android:text="10"
 		android:textColor="#F78208"
 		android:layout_width="0dip"
-		android:layout_weight="1"
+		android:layout_weight="2"
 				android:id="@+id/level"
 		android:paddingRight="8dip"
 		
@@ -142,6 +162,8 @@ android:stretchColumns="0"
 	
 		android:layout_height="20dip">
 	<TextView android:text="Total Points"
+      	android:id ="@+id/daily_summary_total_points"
+	
 		android:textColor="#000000"
 		android:layout_height="fill_parent"
 		android:layout_width="0dip"
@@ -150,6 +172,7 @@ android:stretchColumns="0"
 		android:layout_weight="1">
 	</TextView>
 	<TextView android:text="Diet"
+	android:id ="@+id/daily_summary_diet"
 		android:textColor="#000000"
 		android:layout_height="fill_parent"
 		android:layout_width="0dip"
@@ -158,6 +181,7 @@ android:stretchColumns="0"
 		android:layout_weight="1">
 	</TextView>
 	<TextView android:text="Exercise"
+	android:id ="@+id/daily_summary_exercise"
 		android:textColor="#000000"
 		android:layout_height="fill_parent"
 		android:layout_width="0dip"
@@ -166,6 +190,7 @@ android:stretchColumns="0"
 		android:layout_weight="1">
 	</TextView>
 	<TextView android:text="Challenges"
+	android:id ="@+id/daily_summary_challenges"
 		android:textColor="#000000"
 		android:layout_height="fill_parent"
 		android:layout_width="0dip"
@@ -237,6 +262,8 @@ android:stretchColumns="0"
 		android:layout_height="20dip">
 		
 	<TextView android:text="Progress to next level:"
+			android:id="@+id/progress_next_level" 
+	
 		android:layout_height="fill_parent"
 		android:textColor="#000000"
 		android:layout_span="3"

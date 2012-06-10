@@ -49,12 +49,8 @@ public class Android_layoutActivity extends Activity {
 						startActivity(signInIntent);
 					}
 				} else {
-					Intent i = new Intent("Profile");
-					Bundle profileInfo = new Bundle();
-					profileInfo.putString("info", "");
-					profileInfo.putString("username", "tester");
-					profileInfo.putString("password", "scryed");
-					i.putExtras(profileInfo);
+					Intent i = new Intent("MainTabBarActivity");
+					
 					startActivity(i);
 				}
 			}
